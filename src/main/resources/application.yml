@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: spring-boot-das-trincheiras
+
+server:
+  servlet:
+    context-path: /
