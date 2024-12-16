@@ -1,6 +1,8 @@
 spring:
   application:
     name: spring-boot-das-trincheiras
+
+#  virtual threads
   threads:
     virtual:
       enabled: true
@@ -11,6 +13,7 @@ server:
   error:
     include-stacktrace: on_param
 
+#  platform threads
   tomcat:
     threads:
       max: 20
