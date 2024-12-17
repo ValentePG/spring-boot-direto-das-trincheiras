@@ -1,32 +1,34 @@
 package dev.valente.domain;
 
-
-
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@Setter
+@AllArgsConstructor
 public class Anime {
 
     private Long id;
 
     private String name;
 
-    public Anime(Long id, String name) {
-        this.id = id;
-        this.name = name;
+    @Getter
+    private static List<Anime> animes = new ArrayList<>();
+
+    static {
+        animes.add(new Anime(1L, "Boku No Hero"));
+        animes.add(new Anime(2L, "Naruto"));
+        animes.add(new Anime(3L, "DBZ"));
+        animes.add(new Anime(4L, "HXH"));
+        animes.add(new Anime(5L, "SNK"));
     }
 
-    public Anime() {
 
-    }
-
-    public static List<Anime> getAnimes() {
-        return List.of(new Anime(1L, "Boku No Hero"),
-                new Anime(2L, "Naruto"),
-                new Anime(3L, "Chainsaw Man"),
-                new Anime(4L, "DBZ"),
-                new Anime(5L, "Tokyo Ghoul"));
+    public static void save(Anime anime){
+        animes.add(anime);
     }
 }

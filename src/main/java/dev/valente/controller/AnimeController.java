@@ -5,12 +5,14 @@ import dev.valente.exceptions.ExceptionTest;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 
 @Slf4j
@@ -52,6 +54,15 @@ public class AnimeController {
                 .filter(a -> a.getId().equals(animeId)).findFirst();
 
         return anime.orElseThrow(() -> new ExceptionTest("Anime not found"));
+    }
+
+    @PostMapping
+    public ResponseEntity<Anime> create(@RequestBody Anime anime) {
+        Random rand = new Random();
+        Long newLong = rand.nextLong();
+        Anime newAnime = new Anime(newLong, anime.getName());
+        Anime.save(newAnime);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newAnime);
     }
 
 }
