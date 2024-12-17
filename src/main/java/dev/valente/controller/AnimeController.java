@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 @Slf4j
@@ -58,11 +59,9 @@ public class AnimeController {
 
     @PostMapping
     public ResponseEntity<Anime> create(@RequestBody Anime anime) {
-        Random rand = new Random();
-        Long newLong = rand.nextLong();
-        Anime newAnime = new Anime(newLong, anime.getName());
-        Anime.save(newAnime);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newAnime);
+        anime.setId(ThreadLocalRandom.current().nextLong(1,10000));
+        Anime.save(anime);
+        return ResponseEntity.status(HttpStatus.CREATED).body(anime);
     }
 
 }
