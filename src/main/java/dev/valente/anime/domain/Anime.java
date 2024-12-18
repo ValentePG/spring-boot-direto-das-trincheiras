@@ -1,8 +1,6 @@
-package dev.valente.domain;
+package dev.valente.anime.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +8,8 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
+@Builder
+@NoArgsConstructor
 public class Anime {
 
     private Long id;

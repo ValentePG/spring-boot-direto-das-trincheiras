@@ -1,7 +1,10 @@
-package dev.valente.controller;
+package dev.valente.producer.controller;
 
-import dev.valente.domain.Producer;
+import dev.valente.producer.domain.Producer;
+import dev.valente.producer.dto.ProducerGetResponse;
+import dev.valente.producer.dto.ProducerPostRequest;
 import dev.valente.exceptions.ExceptionTest;
+import dev.valente.producer.mapper.ProducerMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
@@ -9,13 +12,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ThreadLocalRandom;
 
 
 @Slf4j
 @RestController
 @RequestMapping("/v1/producers")
 public class ProducerController {
+
+    private static final ProducerMapper MAPPER = ProducerMapper.INSTANCE;
 
 //    @GetMapping
 //    public ResponseEntity<ProducerDTO> listAll(HttpServletRequest request) {
@@ -55,16 +59,18 @@ public class ProducerController {
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE,
-            headers = "x-api-key")
-    public ResponseEntity<Producer> create(@RequestBody Producer producer, @RequestHeader HttpHeaders headers, HttpServletRequest request) {
+            headers = {"x-api-key", "x-api-teste"})
+    public ResponseEntity<ProducerGetResponse> create(@RequestBody ProducerPostRequest producerPostRequest,
+                                                      @RequestHeader HttpHeaders headers,
+                                                      HttpServletRequest request) {
 
-        log.info("{}", headers);
-        //              ^^ Informação daqui de cima vem da função aqui de baixo, provavelmente
-        // request.getHeaderNames().asIterator().forEachRemaining(name -> log.info("{}: {}", name, request.getHeader(name)));
+        var producer = MAPPER.toProducer(producerPostRequest);
 
-        producer.setId(ThreadLocalRandom.current().nextLong(1,10000));
         Producer.save(producer);
-        return ResponseEntity.status(HttpStatus.CREATED).body(producer);
+
+        var producerGetResponse = MAPPER.toProducerGetResponse(producer);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(producerGetResponse);
     }
 
 }

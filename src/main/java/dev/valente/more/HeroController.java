@@ -1,4 +1,4 @@
-package dev.valente.controller;
+package dev.valente.more;
 
 import org.springframework.web.bind.annotation.*;
 
