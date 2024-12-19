@@ -1,17 +1,19 @@
 package dev.valente.producer.controller;
 
-import dev.valente.producer.domain.Producer;
 import dev.valente.producer.dto.ProducerGetResponse;
 import dev.valente.producer.dto.ProducerPostRequest;
-import dev.valente.exceptions.ExceptionTest;
-import dev.valente.producer.mapper.ProducerMapper;
+import dev.valente.producer.dto.ProducerPutRequest;
+import dev.valente.producer.service.MapperService;
+import dev.valente.producer.service.ProducerService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.*;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Slf4j
@@ -19,42 +21,45 @@ import java.util.Optional;
 @RequestMapping("/v1/producers")
 public class ProducerController {
 
-    private static final ProducerMapper MAPPER = ProducerMapper.INSTANCE;
+    private final ProducerService producerService;
+    private final MapperService mapperService;
 
-//    @GetMapping
-//    public ResponseEntity<ProducerDTO> listAll(HttpServletRequest request) {
-//        List<String> list = List.of("Naruto", "DBZ", "Inuyasha", "Digimon");
-//        var uri = request.getRequestURI();
-//        var dto = new ProducerDTO(list, uri);
-//        log.info(Thread.currentThread().getName());
-//        return ResponseEntity.ok().body(dto);
-//    }
+    public ProducerController(ProducerService producerService, MapperService mapperService) {
+        this.producerService = producerService;
+        this.mapperService = mapperService;
+    }
+
 
     @GetMapping
-    public List<Producer> findAll() {
-        return Producer.getProducers();
+    public ResponseEntity<List<ProducerGetResponse>> findAll() {
+
+        var producerGetResponse = producerService.findAll()
+                .stream()
+                .map(mapperService::toProducerGetResponse)
+                .toList();
+
+        return ResponseEntity.ok(producerGetResponse);
     }
 
     @GetMapping("find")
-    public ResponseEntity<Producer> findFiltered(@RequestParam String name) {
-
-        Optional<Producer> producer = Producer.getProducers().stream()
-                .filter(a -> a.getName().equalsIgnoreCase(name))
-                .findFirst();
+    public ResponseEntity<ProducerGetResponse> findByName(@RequestParam String name) {
 
 
+        var producer = producerService.findByNameOrThrowNotFound(name);
+        var producerGetResponse = mapperService.toProducerGetResponse(producer);
 
-        return producer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        return ResponseEntity.ok(producerGetResponse);
 
     }
 
     @GetMapping("{producerId}")
-    public Producer findVariable(@PathVariable Long producerId) {
+    public ResponseEntity<ProducerGetResponse> findById(@PathVariable Long producerId) {
 
-        Optional<Producer> anime = Producer.getProducers().stream()
-                .filter(a -> a.getId().equals(producerId)).findFirst();
+        var producer = producerService.findByIdOrThrowNotFound(producerId);
 
-        return anime.orElseThrow(() -> new ExceptionTest("Producer not found"));
+        var producerGetResponse = mapperService.toProducerGetResponse(producer);
+
+        return ResponseEntity.ok(producerGetResponse);
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE,
@@ -64,13 +69,31 @@ public class ProducerController {
                                                       @RequestHeader HttpHeaders headers,
                                                       HttpServletRequest request) {
 
-        var producer = MAPPER.toProducer(producerPostRequest);
-
-        Producer.save(producer);
-
-        var producerGetResponse = MAPPER.toProducerGetResponse(producer);
+        var producer = mapperService.toProducer(producerPostRequest);
+        var producerSaved = producerService.save(producer);
+        var producerGetResponse = mapperService.toProducerGetResponse(producerSaved);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(producerGetResponse);
+    }
+
+    @DeleteMapping("{producerId}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long producerId) {
+        log.info("Deleting producer with id {}", producerId);
+
+        producerService.delete(producerId);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping
+    public ResponseEntity<Void> replace(@RequestBody ProducerPutRequest producerPutRequest) {
+        log.info("Updating producer with id {}", producerPutRequest.getId());
+
+        var producerToRemove = mapperService.toProducer(producerPutRequest);
+
+        producerService.replace(producerToRemove);
+
+        return ResponseEntity.noContent().build();
     }
 
 }

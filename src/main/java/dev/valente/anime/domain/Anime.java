@@ -28,7 +28,7 @@ public class Anime {
     }
 
 
-    public static void save(Anime anime){
+    public static void save(Anime anime) {
         animes.add(anime);
     }
 }

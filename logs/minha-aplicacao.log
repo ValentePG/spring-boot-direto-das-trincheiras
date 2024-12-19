@@ -1,0 +1,422 @@
+2024-12-19T14:42:28.662-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 16880 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T14:42:28.663-03:00 DEBUG 16880 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T14:42:28.664-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T14:42:28.702-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-12-19T14:42:28.703-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-12-19T14:42:29.336-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T14:42:29.346-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T14:42:29.347-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T14:42:29.378-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T14:42:29.379-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 676 ms
+2024-12-19T14:42:29.619-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T14:42:29.638-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T14:42:29.644-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 1.345 seconds (process running for 1.851)
+2024-12-19T14:42:54.541-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-19T14:42:54.541-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-19T14:42:54.542-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-12-19T14:42:54.572-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [tomcat-handler-1] d.v.p.controller.ProducerController      : Deleting producer with id 14
+2024-12-19T14:42:54.578-03:00  WARN 16880 --- [spring-boot-das-trincheiras] [tomcat-handler-1] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Producer not Found"]
+2024-12-19T14:42:57.645-03:00  INFO 16880 --- [spring-boot-das-trincheiras] [tomcat-handler-2] d.v.p.controller.ProducerController      : Deleting producer with id 2
+2024-12-19T14:43:52.983-03:00  INFO 4956 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 4956 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T14:43:52.984-03:00 DEBUG 4956 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T14:43:52.985-03:00  INFO 4956 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T14:43:53.022-03:00  INFO 4956 --- [spring-boot-das-trincheiras] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-12-19T14:43:53.023-03:00  INFO 4956 --- [spring-boot-das-trincheiras] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-12-19T14:43:53.673-03:00  INFO 4956 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T14:43:53.683-03:00  INFO 4956 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T14:43:53.683-03:00  INFO 4956 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T14:43:53.715-03:00  INFO 4956 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T14:43:53.716-03:00  INFO 4956 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 692 ms
+2024-12-19T14:43:53.963-03:00  INFO 4956 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T14:43:53.985-03:00  INFO 4956 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T14:43:53.991-03:00  INFO 4956 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 1.406 seconds (process running for 1.903)
+2024-12-19T14:43:58.803-03:00  INFO 4956 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-19T14:43:58.804-03:00  INFO 4956 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-19T14:43:58.804-03:00  INFO 4956 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-12-19T14:43:58.831-03:00  INFO 4956 --- [spring-boot-das-trincheiras] [tomcat-handler-1] d.v.p.controller.ProducerController      : Deleting producer with id 2
+2024-12-19T14:55:23.067-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 2524 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T14:55:23.068-03:00 DEBUG 2524 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T14:55:23.069-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T14:55:23.108-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-12-19T14:55:23.108-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-12-19T14:55:23.927-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T14:55:23.937-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T14:55:23.938-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T14:55:23.971-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T14:55:23.971-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 861 ms
+2024-12-19T14:55:24.226-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T14:55:24.246-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T14:55:24.251-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 1.58 seconds (process running for 2.113)
+2024-12-19T14:55:39.839-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-19T14:55:39.839-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-19T14:55:39.840-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-19T14:55:48.329-03:00  WARN 2524 --- [spring-boot-das-trincheiras] [tomcat-handler-3] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Anime not found"]
+2024-12-19T14:56:40.120-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-12-19T14:56:40.183-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 2524 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T14:56:40.183-03:00 DEBUG 2524 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T14:56:40.183-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T14:56:40.356-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T14:56:40.358-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T14:56:40.358-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T14:56:40.372-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T14:56:40.372-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 186 ms
+2024-12-19T14:56:40.447-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T14:56:40.455-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T14:56:40.458-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 0.304 seconds (process running for 78.319)
+2024-12-19T14:56:40.459-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-19T14:56:41.877-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2024-12-19T14:56:41.936-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 2524 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T14:56:41.936-03:00 DEBUG 2524 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T14:56:41.936-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T14:56:42.100-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T14:56:42.101-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T14:56:42.101-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T14:56:42.114-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T14:56:42.115-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 177 ms
+2024-12-19T14:56:42.175-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T14:56:42.181-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T14:56:42.183-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 0.272 seconds (process running for 80.045)
+2024-12-19T14:56:42.184-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-19T14:56:45.374-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-19T14:56:45.374-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-19T14:56:45.375-03:00  INFO 2524 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-19T14:57:07.144-03:00  WARN 2524 --- [spring-boot-das-trincheiras] [tomcat-handler-6] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Anime not found"]
+2024-12-19T15:11:53.853-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 18256 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T15:11:53.855-03:00 DEBUG 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T15:11:53.855-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T15:11:53.893-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-12-19T15:11:53.893-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-12-19T15:11:54.537-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T15:11:54.548-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T15:11:54.548-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T15:11:54.579-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T15:11:54.579-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 686 ms
+2024-12-19T15:11:54.826-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T15:11:54.846-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T15:11:54.852-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 1.38 seconds (process running for 2.086)
+2024-12-19T15:12:21.520-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-19T15:12:21.521-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-19T15:12:21.521-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-12-19T15:14:24.505-03:00  WARN 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' is not supported]
+2024-12-19T15:15:27.868-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-12-19T15:15:27.932-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 18256 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T15:15:27.932-03:00 DEBUG 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T15:15:27.932-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T15:15:28.104-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T15:15:28.106-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T15:15:28.106-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T15:15:28.117-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T15:15:28.117-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 182 ms
+2024-12-19T15:15:28.189-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T15:15:28.196-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T15:15:28.198-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 0.293 seconds (process running for 215.432)
+2024-12-19T15:15:28.199-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-19T15:15:32.975-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-19T15:15:32.975-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-19T15:15:32.975-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-12-19T15:15:33.011-03:00 DEBUG 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-1] d.v.anime.controller.AnimeController     : Request to update anime : dev.valente.anime.dto.AnimePutRequest@30276396
+2024-12-19T15:22:38.874-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 2 deletions, 0 modifications)
+2024-12-19T15:22:38.932-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 18256 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T15:22:38.933-03:00 DEBUG 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T15:22:38.933-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T15:22:39.108-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T15:22:39.109-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T15:22:39.110-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T15:22:39.120-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T15:22:39.121-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 186 ms
+2024-12-19T15:22:39.193-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T15:22:39.200-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T15:22:39.203-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 0.295 seconds (process running for 646.437)
+2024-12-19T15:22:39.204-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-19T15:22:41.674-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 4 class path changes (3 additions, 0 deletions, 1 modification)
+2024-12-19T15:22:41.726-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 18256 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T15:22:41.726-03:00 DEBUG 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T15:22:41.726-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T15:22:41.877-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T15:22:41.878-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T15:22:41.878-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T15:22:41.890-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T15:22:41.890-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 162 ms
+2024-12-19T15:22:41.943-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T15:22:41.950-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T15:22:41.952-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 0.248 seconds (process running for 649.186)
+2024-12-19T15:22:41.953-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-19T15:23:09.711-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-19T15:23:09.711-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-19T15:23:09.711-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-12-19T15:24:41.601-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 2 deletions, 0 modifications)
+2024-12-19T15:24:41.658-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 18256 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T15:24:41.658-03:00 DEBUG 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T15:24:41.658-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T15:24:41.805-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T15:24:41.805-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T15:24:41.805-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T15:24:41.816-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T15:24:41.817-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 157 ms
+2024-12-19T15:24:41.864-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T15:24:41.870-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T15:24:41.873-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 0.237 seconds (process running for 769.107)
+2024-12-19T15:24:41.874-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-19T15:24:43.284-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 3 class path changes (2 additions, 0 deletions, 1 modification)
+2024-12-19T15:24:43.332-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 18256 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T15:24:43.332-03:00 DEBUG 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T15:24:43.332-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T15:24:43.455-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T15:24:43.456-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T15:24:43.456-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T15:24:43.466-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T15:24:43.467-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 133 ms
+2024-12-19T15:24:43.512-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T15:24:43.517-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T15:24:43.519-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 0.208 seconds (process running for 770.753)
+2024-12-19T15:24:43.519-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-19T15:25:05.114-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-19T15:25:05.114-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-19T15:25:05.115-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-19T15:30:25.404-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 3 class path changes (0 additions, 3 deletions, 0 modifications)
+2024-12-19T15:30:25.461-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 18256 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T15:30:25.461-03:00 DEBUG 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T15:30:25.461-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T15:30:25.627-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T15:30:25.628-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T15:30:25.628-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T15:30:25.639-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T15:30:25.639-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 175 ms
+2024-12-19T15:30:25.700-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T15:30:25.706-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T15:30:25.709-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 0.271 seconds (process running for 1112.943)
+2024-12-19T15:30:25.709-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-19T15:30:27.160-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 4 class path changes (3 additions, 0 deletions, 1 modification)
+2024-12-19T15:30:27.228-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 18256 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T15:30:27.228-03:00 DEBUG 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T15:30:27.228-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T15:30:27.377-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T15:30:27.378-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T15:30:27.378-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T15:30:27.388-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T15:30:27.389-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 160 ms
+2024-12-19T15:30:27.436-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T15:30:27.441-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T15:30:27.443-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 0.237 seconds (process running for 1114.677)
+2024-12-19T15:30:27.444-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-19T15:30:29.131-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-19T15:30:29.131-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-19T15:30:29.133-03:00  INFO 18256 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-12-19T15:34:35.512-03:00  INFO 8756 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 8756 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T15:34:35.514-03:00 DEBUG 8756 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T15:34:35.515-03:00  INFO 8756 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T15:34:35.554-03:00  INFO 8756 --- [spring-boot-das-trincheiras] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-12-19T15:34:35.554-03:00  INFO 8756 --- [spring-boot-das-trincheiras] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-12-19T15:34:36.245-03:00  INFO 8756 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T15:34:36.259-03:00  INFO 8756 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T15:34:36.259-03:00  INFO 8756 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T15:34:36.291-03:00  INFO 8756 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T15:34:36.291-03:00  INFO 8756 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 736 ms
+2024-12-19T15:34:36.566-03:00  INFO 8756 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T15:34:36.597-03:00  INFO 8756 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T15:34:36.604-03:00  INFO 8756 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 1.48 seconds (process running for 2.074)
+2024-12-19T15:34:38.219-03:00  INFO 8756 --- [spring-boot-das-trincheiras] [tomcat-handler-0] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-19T15:34:38.219-03:00  INFO 8756 --- [spring-boot-das-trincheiras] [tomcat-handler-0] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-19T15:34:38.219-03:00  INFO 8756 --- [spring-boot-das-trincheiras] [tomcat-handler-0] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-12-19T15:35:07.473-03:00  WARN 8756 --- [spring-boot-das-trincheiras] [tomcat-handler-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('}' (code 125)): was expecting double-quote to start field name]
+2024-12-19T16:48:35.568-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 3412 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T16:48:35.569-03:00 DEBUG 3412 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T16:48:35.569-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T16:48:35.607-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-12-19T16:48:35.608-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-12-19T16:48:36.259-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T16:48:36.271-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T16:48:36.271-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T16:48:36.303-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T16:48:36.304-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 696 ms
+2024-12-19T16:48:36.553-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T16:48:36.572-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T16:48:36.579-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 1.39 seconds (process running for 1.91)
+2024-12-19T16:48:47.547-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [tomcat-handler-0] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-19T16:48:47.547-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [tomcat-handler-0] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-19T16:48:47.548-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [tomcat-handler-0] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-19T16:49:21.064-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [tomcat-handler-9] d.v.p.controller.ProducerController      : Deleting producer with id 7208
+2024-12-19T16:49:45.394-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [tomcat-handler-11] d.v.p.controller.ProducerController      : Updating producer with id 3
+2024-12-19T16:49:59.258-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [tomcat-handler-13] d.v.p.controller.ProducerController      : Deleting producer with id 72082
+2024-12-19T16:49:59.262-03:00  WARN 3412 --- [spring-boot-das-trincheiras] [tomcat-handler-13] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Producer not Found"]
+2024-12-19T16:50:15.414-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [tomcat-handler-14] d.v.p.controller.ProducerController      : Updating producer with id 31
+2024-12-19T16:50:15.415-03:00  WARN 3412 --- [spring-boot-das-trincheiras] [tomcat-handler-14] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Producer not Found"]
+2024-12-19T17:09:58.947-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 2 deletions, 0 modifications)
+2024-12-19T17:09:59.024-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 3412 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T17:09:59.024-03:00 DEBUG 3412 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T17:09:59.024-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T17:09:59.201-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T17:09:59.202-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T17:09:59.203-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T17:09:59.215-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T17:09:59.215-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 189 ms
+2024-12-19T17:09:59.297-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T17:09:59.304-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T17:09:59.307-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 0.321 seconds (process running for 1284.638)
+2024-12-19T17:09:59.309-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-19T17:10:00.733-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 3 class path changes (3 additions, 0 deletions, 0 modifications)
+2024-12-19T17:10:00.790-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 3412 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T17:10:00.791-03:00 DEBUG 3412 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T17:10:00.791-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T17:10:00.950-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T17:10:00.951-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T17:10:00.951-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T17:10:00.966-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T17:10:00.966-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 174 ms
+2024-12-19T17:10:01.031-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T17:10:01.037-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T17:10:01.039-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 0.272 seconds (process running for 1286.37)
+2024-12-19T17:10:01.040-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-19T17:10:03.085-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-19T17:10:03.085-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-19T17:10:03.086-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-19T17:10:18.528-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [tomcat-handler-6] d.v.p.controller.ProducerController      : Deleting producer with id 1866
+2024-12-19T17:10:46.541-03:00  INFO 3412 --- [spring-boot-das-trincheiras] [tomcat-handler-8] d.v.p.controller.ProducerController      : Updating producer with id 2
+2024-12-19T17:18:09.852-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 3928 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T17:18:09.853-03:00 DEBUG 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T17:18:09.854-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T17:18:09.891-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-12-19T17:18:09.891-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-12-19T17:18:10.532-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T17:18:10.542-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T17:18:10.542-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T17:18:10.573-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T17:18:10.573-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 682 ms
+2024-12-19T17:18:10.818-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T17:18:10.839-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T17:18:10.845-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 1.349 seconds (process running for 1.851)
+2024-12-19T17:18:14.601-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-19T17:18:14.601-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-19T17:18:14.602-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-12-19T17:18:25.918-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [tomcat-handler-4] d.v.p.controller.ProducerController      : Deleting producer with id 906
+2024-12-19T17:18:46.617-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [tomcat-handler-6] d.v.p.controller.ProducerController      : Updating producer with id 2
+2024-12-19T17:24:23.821-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 2 deletions, 0 modifications)
+2024-12-19T17:24:23.892-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 3928 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T17:24:23.893-03:00 DEBUG 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T17:24:23.893-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T17:24:24.081-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T17:24:24.082-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T17:24:24.083-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T17:24:24.095-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T17:24:24.095-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 199 ms
+2024-12-19T17:24:24.175-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T17:24:24.182-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T17:24:24.185-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 0.321 seconds (process running for 375.191)
+2024-12-19T17:24:24.186-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-19T17:24:25.609-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (2 additions, 0 deletions, 0 modifications)
+2024-12-19T17:24:25.659-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 3928 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T17:24:25.660-03:00 DEBUG 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T17:24:25.660-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T17:24:25.795-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T17:24:25.795-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T17:24:25.795-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T17:24:25.806-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T17:24:25.806-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 145 ms
+2024-12-19T17:24:25.860-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T17:24:25.867-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T17:24:25.868-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 0.23 seconds (process running for 376.874)
+2024-12-19T17:24:25.869-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-19T17:31:21.624-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-12-19T17:31:21.680-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 3928 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T17:31:21.680-03:00 DEBUG 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T17:31:21.680-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T17:31:21.865-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T17:31:21.867-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T17:31:21.867-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T17:31:21.879-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-19T17:31:21.879-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 196 ms
+2024-12-19T17:31:21.892-03:00  WARN 3928 --- [spring-boot-das-trincheiras] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'producerController' defined in file [C:\LearningJava\spring-boot-das-trincheiras\target\classes\dev\valente\producer\controller\ProducerController.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'dev.valente.producer.service.ProducerService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2024-12-19T17:31:21.892-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-12-19T17:31:21.897-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-12-19T17:31:21.918-03:00 ERROR 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in dev.valente.producer.controller.ProducerController required a bean of type 'dev.valente.producer.service.ProducerService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'dev.valente.producer.service.ProducerService' in your configuration.
+
+2024-12-19T17:31:23.357-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 3928 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T17:31:23.358-03:00 DEBUG 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T17:31:23.358-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T17:31:23.483-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T17:31:23.484-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T17:31:23.485-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T17:31:23.494-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2024-12-19T17:31:23.495-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 136 ms
+2024-12-19T17:31:23.505-03:00  WARN 3928 --- [spring-boot-das-trincheiras] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'producerController' defined in file [C:\LearningJava\spring-boot-das-trincheiras\target\classes\dev\valente\producer\controller\ProducerController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'producerService' defined in file [C:\LearningJava\spring-boot-das-trincheiras\target\classes\dev\valente\producer\service\ProducerService.class]: Unsatisfied dependency expressed through constructor parameter 1: No qualifying bean of type 'dev.valente.producer.mapper.ProducerMapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2024-12-19T17:31:23.505-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-12-19T17:31:23.508-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-12-19T17:31:23.511-03:00 ERROR 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 1 of constructor in dev.valente.producer.service.ProducerService required a bean of type 'dev.valente.producer.mapper.ProducerMapper' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'dev.valente.producer.mapper.ProducerMapper' in your configuration.
+
+2024-12-19T17:33:24.442-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 3928 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T17:33:24.443-03:00 DEBUG 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T17:33:24.443-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T17:33:24.588-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T17:33:24.589-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T17:33:24.591-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T17:33:24.602-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2024-12-19T17:33:24.602-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 158 ms
+2024-12-19T17:33:24.612-03:00  WARN 3928 --- [spring-boot-das-trincheiras] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'producerController' defined in file [C:\LearningJava\spring-boot-das-trincheiras\target\classes\dev\valente\producer\controller\ProducerController.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'dev.valente.producer.service.ProducerService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2024-12-19T17:33:24.612-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-12-19T17:33:24.615-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-12-19T17:33:24.619-03:00 ERROR 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in dev.valente.producer.controller.ProducerController required a bean of type 'dev.valente.producer.service.ProducerService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'dev.valente.producer.service.ProducerService' in your configuration.
+
+2024-12-19T17:33:26.071-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 3928 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
+2024-12-19T17:33:26.071-03:00 DEBUG 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15
+2024-12-19T17:33:26.071-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-12-19T17:33:26.193-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-19T17:33:26.194-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-19T17:33:26.194-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
+2024-12-19T17:33:26.204-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat-3].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2024-12-19T17:33:26.204-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 132 ms
+2024-12-19T17:33:26.266-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-12-19T17:33:26.272-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-19T17:33:26.274-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Started SpringBootDasTrincheirasApplication in 0.219 seconds (process running for 917.28)
+2024-12-19T17:33:26.275-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-12-19T17:33:54.303-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.a.c.c.C.[Tomcat-3].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-19T17:33:54.303-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-19T17:33:54.304-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [tomcat-handler-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-19T17:34:04.461-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [tomcat-handler-4] d.v.p.controller.ProducerController      : Deleting producer with id 55
+2024-12-19T17:34:07.608-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [tomcat-handler-5] d.v.p.controller.ProducerController      : Deleting producer with id 55
+2024-12-19T17:34:07.611-03:00  WARN 3928 --- [spring-boot-das-trincheiras] [tomcat-handler-5] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND "Producer not found"]
+2024-12-19T17:34:28.100-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [tomcat-handler-7] d.v.p.controller.ProducerController      : Updating producer with id 3

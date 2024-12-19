@@ -1,7 +1,7 @@
 package dev.valente.exceptions;
 
 
-public class ExceptionTest extends RuntimeException{
+public class ExceptionTest extends RuntimeException {
     public ExceptionTest() {
         super();
     }

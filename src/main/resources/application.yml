@@ -1,7 +1,6 @@
 spring:
   application:
     name: spring-boot-das-trincheiras
-
 #  virtual threads
   threads:
     virtual:
@@ -9,11 +8,15 @@ spring:
 server:
   servlet:
     context-path: /
-
   error:
     include-stacktrace: on_param
-
-#  platform threads
+  #  platform threads
   tomcat:
     threads:
       max: 20
+logging:
+  level:
+    dev.valente: debug
+#  file:
+#    name: logs/minha-aplicacao.log
+#    path: logs
