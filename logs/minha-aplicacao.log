@@ -353,7 +353,7 @@ Consider defining a bean of type 'dev.valente.producer.service.ProducerService' 
 2024-12-19T17:31:23.485-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.33]
 2024-12-19T17:31:23.494-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
 2024-12-19T17:31:23.495-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 136 ms
-2024-12-19T17:31:23.505-03:00  WARN 3928 --- [spring-boot-das-trincheiras] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'producerController' defined in file [C:\LearningJava\spring-boot-das-trincheiras\target\classes\dev\valente\producer\controller\ProducerController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'producerService' defined in file [C:\LearningJava\spring-boot-das-trincheiras\target\classes\dev\valente\producer\service\ProducerService.class]: Unsatisfied dependency expressed through constructor parameter 1: No qualifying bean of type 'dev.valente.producer.mapper.ProducerMapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2024-12-19T17:31:23.505-03:00  WARN 3928 --- [spring-boot-das-trincheiras] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'producerController' defined in file [C:\LearningJava\spring-boot-das-trincheiras\target\classes\dev\valente\producer\controller\ProducerController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'producerService' defined in file [C:\LearningJava\spring-boot-das-trincheiras\target\classes\dev\valente\producer\service\ProducerService.class]: Unsatisfied dependency expressed through constructor parameter 1: No qualifying bean of type 'dev.valente.producer.mapperService.ProducerMapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
 2024-12-19T17:31:23.505-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
 2024-12-19T17:31:23.508-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
 
@@ -366,12 +366,12 @@ APPLICATION FAILED TO START
 
 Description:
 
-Parameter 1 of constructor in dev.valente.producer.service.ProducerService required a bean of type 'dev.valente.producer.mapper.ProducerMapper' that could not be found.
+Parameter 1 of constructor in dev.valente.producer.service.ProducerService required a bean of type 'dev.valente.producer.mapperService.ProducerMapper' that could not be found.
 
 
 Action:
 
-Consider defining a bean of type 'dev.valente.producer.mapper.ProducerMapper' in your configuration.
+Consider defining a bean of type 'dev.valente.producer.mapperService.ProducerMapper' in your configuration.
 
 2024-12-19T17:33:24.442-03:00  INFO 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Starting SpringBootDasTrincheirasApplication using Java 21.0.2 with PID 3928 (C:\LearningJava\spring-boot-das-trincheiras\target\classes started by Valentte in C:\LearningJava\spring-boot-das-trincheiras)
 2024-12-19T17:33:24.443-03:00 DEBUG 3928 --- [spring-boot-das-trincheiras] [restartedMain] d.v.SpringBootDasTrincheirasApplication  : Running with Spring Boot v3.3.6, Spring v6.1.15

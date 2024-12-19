@@ -7,10 +7,8 @@ import dev.valente.producer.dto.ProducerPutRequest;
 import dev.valente.producer.mapper.ProducerMapper;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-
 @Service
-public class MapperService {
+public class ProducerMapperService {
     private final ProducerMapper MAPPER = ProducerMapper.INSTANCE;
 
     public Producer toProducer(ProducerPutRequest putRequest) {

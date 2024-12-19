@@ -3,7 +3,7 @@ package dev.valente.producer.controller;
 import dev.valente.producer.dto.ProducerGetResponse;
 import dev.valente.producer.dto.ProducerPostRequest;
 import dev.valente.producer.dto.ProducerPutRequest;
-import dev.valente.producer.service.MapperService;
+import dev.valente.producer.service.ProducerMapperService;
 import dev.valente.producer.service.ProducerService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -22,11 +22,11 @@ import java.util.List;
 public class ProducerController {
 
     private final ProducerService producerService;
-    private final MapperService mapperService;
+    private final ProducerMapperService producerMapperService;
 
-    public ProducerController(ProducerService producerService, MapperService mapperService) {
+    public ProducerController(ProducerService producerService, ProducerMapperService producerMapperService) {
         this.producerService = producerService;
-        this.mapperService = mapperService;
+        this.producerMapperService = producerMapperService;
     }
 
 
@@ -35,7 +35,7 @@ public class ProducerController {
 
         var producerGetResponse = producerService.findAll()
                 .stream()
-                .map(mapperService::toProducerGetResponse)
+                .map(producerMapperService::toProducerGetResponse)
                 .toList();
 
         return ResponseEntity.ok(producerGetResponse);
@@ -46,7 +46,7 @@ public class ProducerController {
 
 
         var producer = producerService.findByNameOrThrowNotFound(name);
-        var producerGetResponse = mapperService.toProducerGetResponse(producer);
+        var producerGetResponse = producerMapperService.toProducerGetResponse(producer);
 
         return ResponseEntity.ok(producerGetResponse);
 
@@ -57,7 +57,7 @@ public class ProducerController {
 
         var producer = producerService.findByIdOrThrowNotFound(producerId);
 
-        var producerGetResponse = mapperService.toProducerGetResponse(producer);
+        var producerGetResponse = producerMapperService.toProducerGetResponse(producer);
 
         return ResponseEntity.ok(producerGetResponse);
     }
@@ -69,9 +69,9 @@ public class ProducerController {
                                                       @RequestHeader HttpHeaders headers,
                                                       HttpServletRequest request) {
 
-        var producer = mapperService.toProducer(producerPostRequest);
+        var producer = producerMapperService.toProducer(producerPostRequest);
         var producerSaved = producerService.save(producer);
-        var producerGetResponse = mapperService.toProducerGetResponse(producerSaved);
+        var producerGetResponse = producerMapperService.toProducerGetResponse(producerSaved);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(producerGetResponse);
     }
@@ -89,7 +89,7 @@ public class ProducerController {
     public ResponseEntity<Void> replace(@RequestBody ProducerPutRequest producerPutRequest) {
         log.info("Updating producer with id {}", producerPutRequest.getId());
 
-        var producerToRemove = mapperService.toProducer(producerPutRequest);
+        var producerToRemove = producerMapperService.toProducer(producerPutRequest);
 
         producerService.replace(producerToRemove);
 
