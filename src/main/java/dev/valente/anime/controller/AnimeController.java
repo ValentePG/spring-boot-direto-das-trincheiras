@@ -1,36 +1,30 @@
 package dev.valente.anime.controller;
 
-import dev.valente.anime.domain.Anime;
 import dev.valente.anime.dto.AnimeGetResponse;
 import dev.valente.anime.dto.AnimePostRequest;
 import dev.valente.anime.dto.AnimePostResponse;
 import dev.valente.anime.dto.AnimePutRequest;
-import dev.valente.anime.service.AnimeService;
 import dev.valente.anime.service.AnimeMapperService;
+import dev.valente.anime.service.AnimeService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-
 @Slf4j
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/v1/animes")
 public class AnimeController {
 
-
     private final AnimeService animeService;
 
     private final AnimeMapperService mapperService;
-
-    public AnimeController(AnimeService animeService, AnimeMapperService mapperService) {
-        this.animeService = animeService;
-        this.mapperService = mapperService;
-    }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AnimeGetResponse>> findAll() {

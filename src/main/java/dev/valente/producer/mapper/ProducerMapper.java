@@ -6,11 +6,10 @@ import dev.valente.producer.dto.ProducerPostRequest;
 import dev.valente.producer.dto.ProducerPutRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingConstants;
 
-@Mapper
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ProducerMapper {
-    ProducerMapper INSTANCE = Mappers.getMapper(ProducerMapper.class);
 
     @Mapping(target = "createdAt", expression = "java(java.time.LocalDateTime.now())")
     @Mapping(target = "id", expression = "java(java.util.concurrent.ThreadLocalRandom.current().nextLong(1, 10000))")

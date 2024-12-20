@@ -6,6 +6,7 @@ import dev.valente.producer.dto.ProducerPutRequest;
 import dev.valente.producer.service.ProducerMapperService;
 import dev.valente.producer.service.ProducerService;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,18 +18,13 @@ import java.util.List;
 
 
 @Slf4j
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/v1/producers")
 public class ProducerController {
 
     private final ProducerService producerService;
     private final ProducerMapperService producerMapperService;
-
-    public ProducerController(ProducerService producerService, ProducerMapperService producerMapperService) {
-        this.producerService = producerService;
-        this.producerMapperService = producerMapperService;
-    }
-
 
     @GetMapping
     public ResponseEntity<List<ProducerGetResponse>> findAll() {

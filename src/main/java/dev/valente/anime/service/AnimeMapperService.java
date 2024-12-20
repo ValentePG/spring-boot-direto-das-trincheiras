@@ -6,26 +6,28 @@ import dev.valente.anime.dto.AnimePostRequest;
 import dev.valente.anime.dto.AnimePostResponse;
 import dev.valente.anime.dto.AnimePutRequest;
 import dev.valente.anime.mapper.AnimeMapper;
-import org.mapstruct.factory.Mappers;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class AnimeMapperService {
 
-    private static final AnimeMapper MAPPER = Mappers.getMapper(AnimeMapper.class);
+    private final AnimeMapper mapper;
 
-    public AnimeGetResponse toAnimeGetResponse(Anime anime){
-        return MAPPER.toAnimeGetResponse(anime);
-    }
-    public Anime toAnime(AnimePostRequest animePostRequest){
-        return MAPPER.toAnime(animePostRequest);
+    public AnimeGetResponse toAnimeGetResponse(Anime anime) {
+        return mapper.toAnimeGetResponse(anime);
     }
 
-    public Anime toAnime(AnimePutRequest request){
-        return MAPPER.toAnime(request);
+    public Anime toAnime(AnimePostRequest animePostRequest) {
+        return mapper.toAnime(animePostRequest);
     }
 
-    public AnimePostResponse toAnimePostResponse(Anime anime){
-        return MAPPER.toAnimePostResponse(anime);
+    public Anime toAnime(AnimePutRequest request) {
+        return mapper.toAnime(request);
+    }
+
+    public AnimePostResponse toAnimePostResponse(Anime anime) {
+        return mapper.toAnimePostResponse(anime);
     }
 }

@@ -7,12 +7,10 @@ import dev.valente.anime.dto.AnimePostResponse;
 import dev.valente.anime.dto.AnimePutRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingConstants;
 
-@Mapper
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface AnimeMapper {
-
-    AnimeMapper INSTANCE = Mappers.getMapper(AnimeMapper.class);
 
     AnimeGetResponse toAnimeGetResponse(Anime anime);
 

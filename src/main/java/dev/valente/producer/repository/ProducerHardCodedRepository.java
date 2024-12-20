@@ -1,13 +1,10 @@
 package dev.valente.producer.repository;
 
 import dev.valente.producer.domain.Producer;
-import dev.valente.producer.dto.ProducerGetResponse;
-import dev.valente.producer.dto.ProducerPostRequest;
-import dev.valente.producer.dto.ProducerPutRequest;
-import dev.valente.producer.mapper.ProducerMapper;
-import org.springframework.http.HttpStatus;
+import external.dependency.Connection;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -16,9 +13,13 @@ import java.util.Optional;
 
 
 @Repository
+@RequiredArgsConstructor
+@Log4j2
 public class ProducerHardCodedRepository {
 
     private static final List<Producer> PRODUCERS = new ArrayList<>();
+//    @Qualifier(value = "connectionMongoDB")
+    private final Connection connectionMongoDB;
 
     static {
         PRODUCERS.add(Producer.builder().id(1L).name("Mappa").createdAt(LocalDateTime.now()).build());
@@ -53,6 +54,7 @@ public class ProducerHardCodedRepository {
     }
 
     public Optional<Producer> findProducerByName(String name) {
+        log.debug(connectionMongoDB);
         return PRODUCERS.stream()
                 .filter(a -> a.getName().equalsIgnoreCase(name))
                 .findFirst();

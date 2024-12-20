@@ -2,6 +2,7 @@ package dev.valente.producer.service;
 
 import dev.valente.producer.domain.Producer;
 import dev.valente.producer.repository.ProducerHardCodedRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -9,13 +10,10 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ProducerService {
 
     private final ProducerHardCodedRepository producerRepository;
-
-    public ProducerService(ProducerHardCodedRepository producerRepository) {
-        this.producerRepository = producerRepository;
-    }
 
     public List<Producer> findAll() {
         return producerRepository.getProducers();
