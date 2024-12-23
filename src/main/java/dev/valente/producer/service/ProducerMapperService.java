@@ -25,4 +25,5 @@ public class ProducerMapperService {
     public ProducerGetResponse toProducerGetResponse(Producer producer) {
         return mapper.toProducerGetResponse(producer);
     }
+
 }

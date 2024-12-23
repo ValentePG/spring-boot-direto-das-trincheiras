@@ -8,14 +8,13 @@ import org.springframework.context.annotation.Configuration;
 public class ConnectionConfiguration {
 
     @Bean
-    public Connection connectionMySql(){
+    public Connection connectionMySql() {
         return new Connection("localhost", "devdojoMySQL", "goku");
     }
 
 
-
     @Bean(name = "connectionMongoDB")
-    public Connection connectionMongo(){
+    public Connection connectionMongo() {
         return new Connection("localhost", "devdojoMongo", "goku");
     }
 
