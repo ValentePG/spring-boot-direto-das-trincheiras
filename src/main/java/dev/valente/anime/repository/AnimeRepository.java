@@ -1,36 +1,29 @@
 package dev.valente.anime.repository;
 
 import dev.valente.anime.domain.Anime;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
+@RequiredArgsConstructor
 public class AnimeRepository {
 
-    private static final List<Anime> ANIMES = new ArrayList<>();
-
-    static {
-        ANIMES.add(new Anime(1L, "Boku No Hero"));
-        ANIMES.add(new Anime(2L, "Naruto"));
-        ANIMES.add(new Anime(3L, "DBZ"));
-        ANIMES.add(new Anime(4L, "HXH"));
-        ANIMES.add(new Anime(5L, "SNK"));
-    }
+    private final AnimeData animeData;
 
     public List<Anime> findAll() {
-        return ANIMES;
+        return animeData.getAnimes();
     }
 
     public Anime save(Anime anime) {
-        ANIMES.add(anime);
+        animeData.getAnimes().add(anime);
         return anime;
     }
 
     public void remove(Anime anime) {
-        ANIMES.remove(anime);
+        animeData.getAnimes().remove(anime);
     }
 
     public void replace(Anime oldAnime, Anime newAnime) {
@@ -38,14 +31,14 @@ public class AnimeRepository {
         save(newAnime);
     }
 
-    public Optional<Anime> findByIdOrThrowNotFound(Long id) {
-        return ANIMES.stream()
+    public Optional<Anime> findById(Long id) {
+        return animeData.getAnimes().stream()
                 .filter(anime -> anime.getId().equals(id))
                 .findFirst();
     }
 
     public Optional<Anime> findByName(String name) {
-        return ANIMES.stream()
+        return animeData.getAnimes().stream()
                 .filter(anime -> anime.getName().equalsIgnoreCase(name))
                 .findFirst();
     }

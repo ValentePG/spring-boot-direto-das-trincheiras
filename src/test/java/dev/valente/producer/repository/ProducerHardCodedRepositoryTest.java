@@ -92,18 +92,17 @@ class ProducerHardCodedRepositoryTest {
         String newName = "Meipou";
 
         var producerToReplace = producersList.getFirst();
-        var producer = Producer.builder().id(producerToReplace.getId())
+        var producerToSave = Producer.builder().id(producerToReplace.getId())
                 .name(newName)
                 .createdAt(producerToReplace.getCreatedAt()).build();
 
         BDDMockito.when(data.getProducers()).thenReturn(producersList);
 
-        repo.replace(producerToReplace, producer);
+        repo.replace(producerToReplace, producerToSave);
 
-        Assertions.assertThat(producer)
+        Assertions.assertThat(producerToSave)
                 .isIn(producersList)
-                .isInstanceOf(Producer.class)
-                        .hasFieldOrPropertyWithValue("name", newName);
+                .doesNotMatch(n -> producerToReplace.getName().equalsIgnoreCase(n.getName()));
 
         Assertions.assertThat(producerToReplace)
                 .isNotIn(producersList);

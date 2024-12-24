@@ -7,10 +7,10 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode
 public class Anime {
 
-    @EqualsAndHashCode.Include
+
     private Long id;
 
     private String name;

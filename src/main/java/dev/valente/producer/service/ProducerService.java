@@ -19,7 +19,6 @@ public class ProducerService {
         return producerRepository.getProducers();
     }
 
-
     public Producer save(Producer producer) {
 
         return producerRepository.save(producer);
