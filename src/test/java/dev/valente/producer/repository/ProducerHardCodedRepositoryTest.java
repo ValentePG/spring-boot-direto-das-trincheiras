@@ -33,7 +33,6 @@ class ProducerHardCodedRepositoryTest {
         producersList.add(Producer.builder().id(1L).name("Mappa").createdAt(LocalDateTime.now()).build());
         producersList.add(Producer.builder().id(2L).name("Kyoto Animation").createdAt(LocalDateTime.now()).build());
         producersList.add(Producer.builder().id(3L).name("Mad House").createdAt(LocalDateTime.now()).build());
-
     }
 
     @Test
@@ -63,7 +62,8 @@ class ProducerHardCodedRepositoryTest {
 
         Assertions.assertThat(savedProducer).isNotNull()
                 .isIn(producersList)
-                .hasFieldOrPropertyWithValue("name", producer.getName());
+                .hasFieldOrPropertyWithValue("name", producer.getName())
+                .hasNoNullFieldsOrProperties();
     }
 
 
@@ -80,7 +80,8 @@ class ProducerHardCodedRepositoryTest {
 
         Assertions.assertThat(producer)
                 .isInstanceOf(Producer.class)
-                .isNotIn(producersList);
+                .isNotIn(producersList)
+                .hasNoNullFieldsOrProperties();
 
     }
 
@@ -102,10 +103,12 @@ class ProducerHardCodedRepositoryTest {
 
         Assertions.assertThat(producerToSave)
                 .isIn(producersList)
+                .hasNoNullFieldsOrProperties()
                 .doesNotMatch(n -> producerToReplace.getName().equalsIgnoreCase(n.getName()));
 
         Assertions.assertThat(producerToReplace)
-                .isNotIn(producersList);
+                .isNotIn(producersList)
+                .hasNoNullFieldsOrProperties();
 
     }
 
@@ -121,7 +124,8 @@ class ProducerHardCodedRepositoryTest {
         var producer = repo.findProducerById(expectedProducer.getId());
 
         Assertions.assertThat(producer)
-                .isPresent().contains(expectedProducer);
+                .isPresent().contains(expectedProducer)
+                .get().hasNoNullFieldsOrProperties();
 
 
     }
@@ -137,6 +141,7 @@ class ProducerHardCodedRepositoryTest {
 
         var producer = repo.findProducerByName(expectedProducer.getName());
 
-        Assertions.assertThat(producer).isPresent().contains(expectedProducer);
+        Assertions.assertThat(producer).isPresent().contains(expectedProducer)
+                .get().hasNoNullFieldsOrProperties();
     }
 }
