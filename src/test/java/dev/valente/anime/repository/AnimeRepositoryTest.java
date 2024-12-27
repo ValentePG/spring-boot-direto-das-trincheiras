@@ -10,7 +10,7 @@ import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 @ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -56,7 +56,9 @@ class AnimeRepositoryTest {
 
         Assertions.assertThat(anime)
                 .isPresent()
-                .contains(firstAnime);
+                .contains(firstAnime)
+                .get()
+                .isIn(dataUtil.getList());
     }
 
     @Test
@@ -72,7 +74,9 @@ class AnimeRepositoryTest {
 
         Assertions.assertThat(anime)
                 .isPresent()
-                .contains(firstAnime);
+                .contains(firstAnime)
+                .get()
+                .isIn(dataUtil.getList());
     }
 
     @Test
@@ -85,8 +89,9 @@ class AnimeRepositoryTest {
         var anime = animeRepository.save(animeToSave);
 
         Assertions.assertThat(anime)
-                .hasFieldOrPropertyWithValue("id", anime.getId())
-                .hasFieldOrPropertyWithValue("name", anime.getName())
+                .hasFieldOrPropertyWithValue("id", animeToSave.getId())
+                .hasFieldOrPropertyWithValue("name", animeToSave.getName())
+                .hasNoNullFieldsOrProperties()
                 .isIn(dataUtil.getList());
     }
 
@@ -120,7 +125,7 @@ class AnimeRepositoryTest {
         animeRepository.replace(animeToReplace, animeToSave);
 
         Assertions.assertThat(animeToReplace)
-                        .isNotIn(dataUtil.getList());
+                .isNotIn(dataUtil.getList());
 
         Assertions.assertThat(animeToSave)
                 .doesNotMatch(n -> animeToReplace.getName().equalsIgnoreCase(n.getName()))

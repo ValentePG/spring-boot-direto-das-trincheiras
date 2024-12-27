@@ -1,7 +1,6 @@
 package dev.valente.common;
 
 import dev.valente.anime.domain.Anime;
-import org.junit.jupiter.api.BeforeEach;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

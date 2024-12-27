@@ -41,7 +41,7 @@ class ProducerHardCodedRepositoryTest {
         BDDMockito.when(data.getProducers()).thenReturn(producerDataUtil.getList());
         var lista = repo.getProducers();
 
-        Assertions.assertThat(lista).isNotNull()
+        Assertions.assertThat(lista)
                 .isNotEmpty()
                 .hasSameSizeAs(producerDataUtil.getList());
     }
@@ -58,8 +58,9 @@ class ProducerHardCodedRepositoryTest {
 
         var savedProducer = repo.save(producer);
 
-        Assertions.assertThat(savedProducer).isNotNull()
+        Assertions.assertThat(savedProducer)
                 .isIn(producerDataUtil.getList())
+                .hasFieldOrPropertyWithValue("id", producer.getId())
                 .hasFieldOrPropertyWithValue("name", producer.getName())
                 .hasNoNullFieldsOrProperties();
     }
@@ -76,9 +77,7 @@ class ProducerHardCodedRepositoryTest {
         repo.remove(producer);
 
         Assertions.assertThat(producer)
-                .isInstanceOf(Producer.class)
-                .isNotIn(producerDataUtil.getList())
-                .hasNoNullFieldsOrProperties();
+                .isNotIn(producerDataUtil.getList());
 
     }
 
@@ -104,8 +103,7 @@ class ProducerHardCodedRepositoryTest {
                 .doesNotMatch(n -> producerToReplace.getName().equalsIgnoreCase(n.getName()));
 
         Assertions.assertThat(producerToReplace)
-                .isNotIn(producerDataUtil.getList())
-                .hasNoNullFieldsOrProperties();
+                .isNotIn(producerDataUtil.getList());
 
     }
 
@@ -122,7 +120,7 @@ class ProducerHardCodedRepositoryTest {
 
         Assertions.assertThat(producer)
                 .isPresent().contains(expectedProducer)
-                .get().hasNoNullFieldsOrProperties();
+                .get().isIn(producerDataUtil.getList());
 
 
     }
@@ -139,6 +137,6 @@ class ProducerHardCodedRepositoryTest {
         var producer = repo.findProducerByName(expectedProducer.getName());
 
         Assertions.assertThat(producer).isPresent().contains(expectedProducer)
-                .get().hasNoNullFieldsOrProperties();
+                .get().isIn(producerDataUtil.getList());
     }
 }

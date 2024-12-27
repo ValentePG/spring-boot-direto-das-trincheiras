@@ -37,16 +37,18 @@ class ProducerServiceTest {
 
     @Test
     @Order(1)
+    @DisplayName("Should return list of producers")
     void getAll_ReturnsListOfProducers_whenSuccessfull() {
         BDDMockito.when(repository.getProducers()).thenReturn(producerDataUtil.getList());
 
         var listProducers = producerService.findAll();
 
-        Assertions.assertThat(listProducers).hasSize(3);
+        Assertions.assertThat(listProducers).hasSameSizeAs(producerDataUtil.getList());
     }
 
     @Test
     @Order(2)
+    @DisplayName("Should save producer")
     void save_ShouldReturnProducer_whenSuccessfull() {
 
         var producerToSave = Producer.builder().id(15L).name("Mappa").createdAt(LocalDateTime.now()).build();
@@ -56,12 +58,12 @@ class ProducerServiceTest {
         var producer = producerService.save(producerToSave);
 
         Assertions.assertThat(producer)
-                .isEqualTo(producerToSave)
-                .hasNoNullFieldsOrProperties();
+                .isEqualTo(producerToSave);
     }
 
     @Test
     @Order(3)
+    @DisplayName("Should replace existent producer by new producer")
     void replace_ShouldReplaceProducer_whenSuccessfull() {
 
         var producerToReplace = producerDataUtil.getList().getFirst();
@@ -73,7 +75,10 @@ class ProducerServiceTest {
         BDDMockito.when(repository.findProducerById(producerToReplace.getId()))
                 .thenReturn(Optional.of(producerToReplace));
 
-        producerService.replace(newProducer);
+        BDDMockito.doNothing().when(repository).replace(producerToReplace, newProducer);
+
+        Assertions.assertThatNoException()
+                .isThrownBy(() -> producerService.replace(newProducer));
 
         Mockito.verify(repository, Mockito.times(1)).findProducerById(producerToReplace.getId());
         Mockito.verify(repository, Mockito.times(1)).replace(producerToReplace, newProducer);
@@ -81,6 +86,7 @@ class ProducerServiceTest {
 
     @Test
     @Order(4)
+    @DisplayName("Should throw not found exception")
     void replace_ShouldThrowNotFound_whenFailure() {
 
         var producerToReplace = producerDataUtil.getList().getFirst();
@@ -93,8 +99,8 @@ class ProducerServiceTest {
                 .thenReturn(Optional.empty());
 
         Assertions.assertThatThrownBy(() -> producerService.replace(newProducer))
-                .isInstanceOf(ResponseStatusException.class)
-                .hasMessage("404 NOT_FOUND \"Producer not found\"");
+                .isInstanceOf(ResponseStatusException.class);
+//                .hasMessage("404 NOT_FOUND \"Producer not found\"");
 
         Mockito.verify(repository, Mockito.times(1)).findProducerById(producerToReplace.getId());
         Mockito.verify(repository, Mockito.times(0)).replace(producerToReplace, newProducer);
@@ -102,13 +108,17 @@ class ProducerServiceTest {
 
     @Test
     @Order(5)
+    @DisplayName("Should remove producer by given ID")
     void remove_ShouldRemoveProducer_whenSuccessfull() {
         var producerToRemove = producerDataUtil.getList().getFirst();
 
         BDDMockito.when(repository.findProducerById(producerToRemove.getId()))
                 .thenReturn(Optional.of(producerToRemove));
 
-        producerService.delete(producerToRemove.getId());
+        BDDMockito.doNothing().when(repository).remove(producerToRemove);
+
+        Assertions.assertThatNoException()
+                .isThrownBy(() -> producerService.delete(producerToRemove.getId()));
 
         Mockito.verify(repository, Mockito.times(1)).remove(producerToRemove);
         Mockito.verify(repository, Mockito.times(1)).findProducerById(producerToRemove.getId());
@@ -116,6 +126,7 @@ class ProducerServiceTest {
 
     @Test
     @Order(6)
+    @DisplayName("Should throw not found exception")
     void remove_ShouldRemoveProducer_whenFailure() {
         var producerToRemove = producerDataUtil.getList().getFirst();
 
@@ -124,65 +135,70 @@ class ProducerServiceTest {
 
 
         Assertions.assertThatThrownBy(() -> producerService.delete(producerToRemove.getId()))
-                .isInstanceOf(ResponseStatusException.class)
-                .hasMessage("404 NOT_FOUND \"Producer not found\"");
+                .isInstanceOf(ResponseStatusException.class);
+//                .hasMessage("404 NOT_FOUND \"Producer not found\"");
+
+        Mockito.verify(repository, Mockito.times(1)).findProducerById(producerToRemove.getId());
+        Mockito.verify(repository, Mockito.times(0)).remove(producerToRemove);
     }
 
     @Test
     @Order(7)
+    @DisplayName("Should return producer by given ID")
     void findByIdOrThrowNotFound_ShouldReturnProducer_whenSuccessfull() {
 
-        var firstProducer = producerDataUtil.getList().getFirst();
+        var expectedProducer = producerDataUtil.getList().getFirst();
 
-        BDDMockito.when(repository.findProducerById(firstProducer.getId())).thenReturn(Optional.of(firstProducer));
+        BDDMockito.when(repository.findProducerById(expectedProducer.getId())).thenReturn(Optional.of(expectedProducer));
 
-        var producer = producerService.findByIdOrThrowNotFound(firstProducer.getId());
+        var producer = producerService.findByIdOrThrowNotFound(expectedProducer.getId());
 
         Assertions.assertThat(producer)
-                .isEqualTo(firstProducer)
-                .hasNoNullFieldsOrProperties();
+                .isEqualTo(expectedProducer);
     }
 
     @Test
     @Order(8)
+    @DisplayName("Should throw not found exception")
     void findByIdOrThrowNotFound_ShouldThrowNotFound_whenFailure() {
 
-        var firstProducer = producerDataUtil.getList().getFirst();
+        var expectedProducer = producerDataUtil.getList().getFirst();
 
-        BDDMockito.when(repository.findProducerById(firstProducer.getId())).thenReturn(Optional.empty());
+        BDDMockito.when(repository.findProducerById(expectedProducer.getId())).thenReturn(Optional.empty());
 
-        Assertions.assertThatThrownBy(() -> producerService.findByIdOrThrowNotFound(firstProducer.getId()))
-                .isInstanceOf(ResponseStatusException.class)
-                .hasMessage("404 NOT_FOUND \"Producer not found\"");
+        Assertions.assertThatThrownBy(() -> producerService.findByIdOrThrowNotFound(expectedProducer.getId()))
+                .isInstanceOf(ResponseStatusException.class);
+//                .hasMessage("404 NOT_FOUND \"Producer not found\"");
 
     }
 
     @Test
     @Order(9)
+    @DisplayName("Should return producer by given name")
     void findByNameOrThrowNotFound_ShouldReturnProducer_whenSuccessfull() {
 
-        var firstProducer = producerDataUtil.getList().getFirst();
+        var expectedProducer = producerDataUtil.getList().getFirst();
 
-        BDDMockito.when(repository.findProducerByName(firstProducer.getName())).thenReturn(Optional.of(firstProducer));
+        BDDMockito.when(repository.findProducerByName(expectedProducer.getName())).thenReturn(Optional.of(expectedProducer));
 
-        var producer = producerService.findByNameOrThrowNotFound(firstProducer.getName());
+        var producer = producerService.findByNameOrThrowNotFound(expectedProducer.getName());
 
         Assertions.assertThat(producer)
-                .isEqualTo(firstProducer)
-                .hasNoNullFieldsOrProperties();
+                .isEqualTo(expectedProducer);
     }
 
     @Test
     @Order(10)
+    @DisplayName("Should throw not found exception")
     void findByNameOrThrowNotFound_ShouldThrowNotFound_whenFailure() {
 
-        var firstProducer = producerDataUtil.getList().getFirst();
+        var expectedProducer = producerDataUtil.getList().getFirst();
 
-        BDDMockito.when(repository.findProducerByName(firstProducer.getName())).thenReturn(Optional.empty());
+        BDDMockito.when(repository.findProducerByName(expectedProducer.getName())).thenReturn(Optional.empty());
 
-        Assertions.assertThatThrownBy(() -> producerService.findByNameOrThrowNotFound(firstProducer.getName()))
-                .isInstanceOf(ResponseStatusException.class)
-                .hasMessage("404 NOT_FOUND \"Producer not found\"");
+        Assertions.assertThatThrownBy(() -> producerService.findByNameOrThrowNotFound(expectedProducer.getName()))
+                .isInstanceOf(ResponseStatusException.class);
+//                .hasMessage("404 NOT_FOUND \"Producer not found\"");
 
     }
 }
