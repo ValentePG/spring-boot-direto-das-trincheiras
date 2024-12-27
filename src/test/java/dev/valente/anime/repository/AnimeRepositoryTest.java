@@ -1,6 +1,8 @@
 package dev.valente.anime.repository;
 
 import dev.valente.anime.domain.Anime;
+import dev.valente.common.AnimeDataUtil;
+import dev.valente.common.DataUtil;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -8,9 +10,7 @@ import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -22,14 +22,11 @@ class AnimeRepositoryTest {
     @Mock
     private AnimeData animeData;
 
-    private final List<Anime> animeList = new ArrayList<>();
+    private DataUtil<Anime> dataUtil;
 
     @BeforeEach
     void setUp() {
-        var anime1 = Anime.builder().id(1L).name("Naruto").build();
-        var anime2 = Anime.builder().id(2L).name("DBZ").build();
-        var anime3 = Anime.builder().id(3L).name("HXH").build();
-        animeList.addAll(List.of(anime1, anime2, anime3));
+        dataUtil = new AnimeDataUtil();
     }
 
     @Test
@@ -37,12 +34,12 @@ class AnimeRepositoryTest {
     @DisplayName("Should return all animes")
     void findAll_ReturnsAllAnimes_whenSuccessful() {
 
-        BDDMockito.when(animeData.getAnimes()).thenReturn(animeList);
+        BDDMockito.when(animeData.getAnimes()).thenReturn(dataUtil.getList());
 
         var listAnimes = animeRepository.findAll();
 
         Assertions.assertThat(listAnimes)
-                .hasSameSizeAs(animeList);
+                .hasSameSizeAs(dataUtil.getList());
 
     }
 
@@ -51,9 +48,9 @@ class AnimeRepositoryTest {
     @DisplayName("Should return anime by given ID")
     void findById_ReturnsAnime_whenSuccessful() {
 
-        BDDMockito.when(animeData.getAnimes()).thenReturn(animeList);
+        BDDMockito.when(animeData.getAnimes()).thenReturn(dataUtil.getList());
 
-        var firstAnime = animeList.getFirst();
+        var firstAnime = dataUtil.getList().getFirst();
 
         var anime = animeRepository.findById(firstAnime.getId());
 
@@ -67,9 +64,9 @@ class AnimeRepositoryTest {
     @DisplayName("Should return anime by given name")
     void findByName_ReturnsAnime_whenSuccessful() {
 
-        BDDMockito.when(animeData.getAnimes()).thenReturn(animeList);
+        BDDMockito.when(animeData.getAnimes()).thenReturn(dataUtil.getList());
 
-        var firstAnime = animeList.getFirst();
+        var firstAnime = dataUtil.getList().getFirst();
 
         var anime = animeRepository.findByName(firstAnime.getName());
 
@@ -83,28 +80,28 @@ class AnimeRepositoryTest {
     @DisplayName("Should save and return Anime")
     void save_SaveAndReturnsAnime_whenSuccessful() {
         var animeToSave = Anime.builder().id(55L).name("SNK").build();
-        BDDMockito.when(animeData.getAnimes()).thenReturn(animeList);
+        BDDMockito.when(animeData.getAnimes()).thenReturn(dataUtil.getList());
 
         var anime = animeRepository.save(animeToSave);
 
         Assertions.assertThat(anime)
                 .hasFieldOrPropertyWithValue("id", anime.getId())
                 .hasFieldOrPropertyWithValue("name", anime.getName())
-                .isIn(animeList);
+                .isIn(dataUtil.getList());
     }
 
     @Test
     @Order(5)
     @DisplayName("Should remove Anime")
     void remove_RemovesAnime_whenSuccessful() {
-        var animeToRemove = animeList.getFirst();
+        var animeToRemove = dataUtil.getList().getFirst();
 
-        BDDMockito.when(animeData.getAnimes()).thenReturn(animeList);
+        BDDMockito.when(animeData.getAnimes()).thenReturn(dataUtil.getList());
 
         animeRepository.remove(animeToRemove);
 
         Assertions.assertThat(animeToRemove)
-                .isNotIn(animeList);
+                .isNotIn(dataUtil.getList());
     }
 
     @Test
@@ -114,19 +111,19 @@ class AnimeRepositoryTest {
 
         String newName = "Orbe";
 
-        var animeToReplace = animeList.getFirst();
+        var animeToReplace = dataUtil.getList().getFirst();
 
         var animeToSave = Anime.builder().id(animeToReplace.getId()).name(newName).build();
 
-        BDDMockito.when(animeData.getAnimes()).thenReturn(animeList);
+        BDDMockito.when(animeData.getAnimes()).thenReturn(dataUtil.getList());
 
         animeRepository.replace(animeToReplace, animeToSave);
 
         Assertions.assertThat(animeToReplace)
-                        .isNotIn(animeList);
+                        .isNotIn(dataUtil.getList());
 
         Assertions.assertThat(animeToSave)
                 .doesNotMatch(n -> animeToReplace.getName().equalsIgnoreCase(n.getName()))
-                .isIn(animeList);
+                .isIn(dataUtil.getList());
     }
 }
