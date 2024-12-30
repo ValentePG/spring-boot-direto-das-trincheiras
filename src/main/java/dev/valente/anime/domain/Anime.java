@@ -8,11 +8,10 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @EqualsAndHashCode
+@ToString
 public class Anime {
 
-
     private Long id;
-
     private String name;
 
 

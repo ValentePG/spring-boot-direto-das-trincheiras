@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 @EqualsAndHashCode
 public class Producer {
 
@@ -17,13 +18,4 @@ public class Producer {
     private String name;
     private LocalDateTime createdAt;
 
-
-    @Override
-    public String toString() {
-        return "Producer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", createdAt=" + createdAt +
-                '}';
-    }
 }

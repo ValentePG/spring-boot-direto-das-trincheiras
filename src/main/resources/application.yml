@@ -1,7 +1,7 @@
 spring:
   application:
     name: spring-boot-das-trincheiras
-#  virtual threads
+  #  virtual threads
   threads:
     virtual:
       enabled: true

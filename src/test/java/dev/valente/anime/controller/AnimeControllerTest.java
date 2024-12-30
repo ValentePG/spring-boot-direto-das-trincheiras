@@ -145,7 +145,7 @@ class AnimeControllerTest {
     @Order(7)
     void delete_shouldDeleteAnime_whenSuccessfull() throws Exception {
 
-          var id = dataUtil.getAnimeToFind().getId();
+        var id = dataUtil.getAnimeToFind().getId();
 
         mockMvc.perform(MockMvcRequestBuilders.delete(URL + "/{id}", id))
                 .andDo(MockMvcResultHandlers.print())
@@ -195,6 +195,6 @@ class AnimeControllerTest {
     }
 
     private void mockList() {
-       BDDMockito.when(animeData.getAnimes()).thenReturn(dataUtil.getList());
+        BDDMockito.when(animeData.getAnimes()).thenReturn(dataUtil.getList());
     }
 }
