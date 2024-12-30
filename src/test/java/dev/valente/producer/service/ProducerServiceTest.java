@@ -15,7 +15,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
@@ -28,12 +27,7 @@ class ProducerServiceTest {
     @Mock
     private ProducerHardCodedRepository repository;
 
-    private DataUtil<Producer> producerDataUtil;
-
-    @BeforeEach
-    void setUp() {
-        producerDataUtil = new ProducerDataUtil();
-    }
+    private final ProducerDataUtil producerDataUtil = new ProducerDataUtil();
 
     @Test
     @Order(1)
@@ -51,7 +45,7 @@ class ProducerServiceTest {
     @DisplayName("Should save producer")
     void save_ShouldReturnProducer_whenSuccessfull() {
 
-        var producerToSave = Producer.builder().id(15L).name("Mappa").createdAt(LocalDateTime.now()).build();
+        var producerToSave = producerDataUtil.getProducerToSave();
 
         BDDMockito.when(repository.save(producerToSave)).thenReturn(producerToSave);
 
@@ -66,11 +60,9 @@ class ProducerServiceTest {
     @DisplayName("Should replace existent producer by new producer")
     void replace_ShouldReplaceProducer_whenSuccessfull() {
 
-        var producerToReplace = producerDataUtil.getList().getFirst();
+        var producerToReplace = producerDataUtil.getProducerToReplace();
 
-        var newProducer = Producer.builder().id(producerToReplace.getId())
-                .name("Kyoto")
-                .build();
+        var newProducer = producerDataUtil.getNewProducer();
 
         BDDMockito.when(repository.findProducerById(producerToReplace.getId()))
                 .thenReturn(Optional.of(producerToReplace));
@@ -89,11 +81,9 @@ class ProducerServiceTest {
     @DisplayName("Should throw not found exception")
     void replace_ShouldThrowNotFound_whenFailure() {
 
-        var producerToReplace = producerDataUtil.getList().getFirst();
+        var producerToReplace = producerDataUtil.getProducerToReplace();
 
-        var newProducer = Producer.builder().id(producerToReplace.getId())
-                .name("Kyoto")
-                .build();
+        var newProducer = producerDataUtil.getNewProducer();
 
         BDDMockito.when(repository.findProducerById(producerToReplace.getId()))
                 .thenReturn(Optional.empty());
@@ -110,7 +100,7 @@ class ProducerServiceTest {
     @Order(5)
     @DisplayName("Should remove producer by given ID")
     void remove_ShouldRemoveProducer_whenSuccessfull() {
-        var producerToRemove = producerDataUtil.getList().getFirst();
+        var producerToRemove = producerDataUtil.getProducerToRemove();
 
         BDDMockito.when(repository.findProducerById(producerToRemove.getId()))
                 .thenReturn(Optional.of(producerToRemove));
@@ -128,7 +118,7 @@ class ProducerServiceTest {
     @Order(6)
     @DisplayName("Should throw not found exception")
     void remove_ShouldRemoveProducer_whenFailure() {
-        var producerToRemove = producerDataUtil.getList().getFirst();
+        var producerToRemove = producerDataUtil.getProducerToRemove();
 
         BDDMockito.when(repository.findProducerById(producerToRemove.getId()))
                 .thenReturn(Optional.empty());
@@ -147,7 +137,7 @@ class ProducerServiceTest {
     @DisplayName("Should return producer by given ID")
     void findByIdOrThrowNotFound_ShouldReturnProducer_whenSuccessfull() {
 
-        var expectedProducer = producerDataUtil.getList().getFirst();
+        var expectedProducer = producerDataUtil.getProducerToFind();
 
         BDDMockito.when(repository.findProducerById(expectedProducer.getId())).thenReturn(Optional.of(expectedProducer));
 
@@ -162,7 +152,7 @@ class ProducerServiceTest {
     @DisplayName("Should throw not found exception")
     void findByIdOrThrowNotFound_ShouldThrowNotFound_whenFailure() {
 
-        var expectedProducer = producerDataUtil.getList().getFirst();
+        var expectedProducer = producerDataUtil.getProducerToFind();
 
         BDDMockito.when(repository.findProducerById(expectedProducer.getId())).thenReturn(Optional.empty());
 
@@ -177,7 +167,7 @@ class ProducerServiceTest {
     @DisplayName("Should return producer by given name")
     void findByNameOrThrowNotFound_ShouldReturnProducer_whenSuccessfull() {
 
-        var expectedProducer = producerDataUtil.getList().getFirst();
+        var expectedProducer = producerDataUtil.getProducerToFind();
 
         BDDMockito.when(repository.findProducerByName(expectedProducer.getName())).thenReturn(Optional.of(expectedProducer));
 
@@ -192,7 +182,7 @@ class ProducerServiceTest {
     @DisplayName("Should throw not found exception")
     void findByNameOrThrowNotFound_ShouldThrowNotFound_whenFailure() {
 
-        var expectedProducer = producerDataUtil.getList().getFirst();
+        var expectedProducer = producerDataUtil.getProducerToFind();
 
         BDDMockito.when(repository.findProducerByName(expectedProducer.getName())).thenReturn(Optional.empty());
 

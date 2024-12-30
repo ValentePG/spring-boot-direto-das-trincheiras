@@ -4,10 +4,7 @@ import dev.valente.common.DataUtil;
 import dev.valente.producer.domain.Producer;
 import dev.valente.producer.repository.ProducerData;
 import dev.valente.producer.repository.ProducerHardCodedRepository;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +18,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @WebMvcTest(controllers = ProducerController.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -47,6 +41,7 @@ class ProducerControllerTest {
 
     @Test
     @DisplayName("GET v1/producers should return list of all producers")
+    @Order(1)
     void findAll_shouldReturnListOfproducers() throws Exception {
 
         BDDMockito.when(producerData.getProducers()).thenReturn(dataUtil.getList());
@@ -54,7 +49,7 @@ class ProducerControllerTest {
         var texto = Files.readString(Paths.get("src/test/resources/get_allproducers_200.json"));
 
 
-        var result = mockMvc.perform(MockMvcRequestBuilders.get("/v1/producers")
+        mockMvc.perform(MockMvcRequestBuilders.get("/v1/producers")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())

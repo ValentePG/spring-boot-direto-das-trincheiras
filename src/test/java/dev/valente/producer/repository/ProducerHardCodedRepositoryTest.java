@@ -1,6 +1,5 @@
 package dev.valente.producer.repository;
 
-import dev.valente.common.DataUtil;
 import dev.valente.common.ProducerDataUtil;
 import dev.valente.producer.domain.Producer;
 import lombok.extern.slf4j.Slf4j;
@@ -11,8 +10,6 @@ import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.time.LocalDateTime;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class)
@@ -26,12 +23,7 @@ class ProducerHardCodedRepositoryTest {
     @Mock
     private ProducerData data;
 
-    private DataUtil<Producer> producerDataUtil;
-
-    @BeforeEach
-    void setUp() {
-        producerDataUtil = new ProducerDataUtil();
-    }
+    private final ProducerDataUtil producerDataUtil = new ProducerDataUtil();
 
     @Test
     @DisplayName("findAll returns a list with all producers")
@@ -39,6 +31,7 @@ class ProducerHardCodedRepositoryTest {
     void getProducers_ReturnsAllProducers_WhenSuccessfull() {
 
         BDDMockito.when(data.getProducers()).thenReturn(producerDataUtil.getList());
+
         var lista = repo.getProducers();
 
         Assertions.assertThat(lista)
@@ -51,17 +44,16 @@ class ProducerHardCodedRepositoryTest {
     @Order(2)
     void save_CreatesProducer_WhenSuccessfull() {
 
-        var producer = Producer.builder().id(4L).name("Meipou")
-                .createdAt(LocalDateTime.now()).build();
+        var producerToSave = producerDataUtil.getProducerToSave();
 
         BDDMockito.when(data.getProducers()).thenReturn(producerDataUtil.getList());
 
-        var savedProducer = repo.save(producer);
+        var savedProducer = repo.save(producerToSave);
 
         Assertions.assertThat(savedProducer)
                 .isIn(producerDataUtil.getList())
-                .hasFieldOrPropertyWithValue("id", producer.getId())
-                .hasFieldOrPropertyWithValue("name", producer.getName())
+                .hasFieldOrPropertyWithValue("id", producerToSave.getId())
+                .hasFieldOrPropertyWithValue("name", producerToSave.getName())
                 .hasNoNullFieldsOrProperties();
     }
 
@@ -70,13 +62,13 @@ class ProducerHardCodedRepositoryTest {
     @DisplayName("Should remove a existent producer")
     @Order(3)
     void remove_RemoveProducer_WhenSuccessfull() {
-        var producer = producerDataUtil.getList().getFirst();
+        var producerToRemove = producerDataUtil.getProducerToRemove();
 
         BDDMockito.when(data.getProducers()).thenReturn(producerDataUtil.getList());
 
-        repo.remove(producer);
+        repo.remove(producerToRemove);
 
-        Assertions.assertThat(producer)
+        Assertions.assertThat(producerToRemove)
                 .isNotIn(producerDataUtil.getList());
 
     }
@@ -86,18 +78,15 @@ class ProducerHardCodedRepositoryTest {
     @Order(4)
     void replace_ReplaceProducer_WhenSuccessfull() {
 
-        String newName = "Meipou";
 
-        var producerToReplace = producerDataUtil.getList().getFirst();
-        var producerToSave = Producer.builder().id(producerToReplace.getId())
-                .name(newName)
-                .createdAt(producerToReplace.getCreatedAt()).build();
+        var producerToReplace = producerDataUtil.getProducerToReplace();
+        var newProducer = producerDataUtil.getNewProducerWithCreatedAt();
 
         BDDMockito.when(data.getProducers()).thenReturn(producerDataUtil.getList());
 
-        repo.replace(producerToReplace, producerToSave);
+        repo.replace(producerToReplace, newProducer);
 
-        Assertions.assertThat(producerToSave)
+        Assertions.assertThat(newProducer)
                 .isIn(producerDataUtil.getList())
                 .hasNoNullFieldsOrProperties()
                 .doesNotMatch(n -> producerToReplace.getName().equalsIgnoreCase(n.getName()));
@@ -112,7 +101,7 @@ class ProducerHardCodedRepositoryTest {
     @Order(5)
     void findById_ReturnsProducerWithGivenId_WhenSuccessfull() {
 
-        var expectedProducer = producerDataUtil.getList().getFirst();
+        var expectedProducer = producerDataUtil.getProducerToFind();
 
         BDDMockito.when(data.getProducers()).thenReturn(producerDataUtil.getList());
 
@@ -130,7 +119,7 @@ class ProducerHardCodedRepositoryTest {
     @Order(6)
     void findByName_ReturnsProducerWithGivenName_WhenSuccessfull() {
 
-        var expectedProducer = producerDataUtil.getList().getFirst();
+        var expectedProducer = producerDataUtil.getProducerToFind();
 
         BDDMockito.when(data.getProducers()).thenReturn(producerDataUtil.getList());
 
