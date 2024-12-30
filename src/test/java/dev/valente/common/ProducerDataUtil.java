@@ -16,7 +16,7 @@ public class ProducerDataUtil implements DataUtil<Producer> {
 
     private final DateTimeFormatter DATA_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS");
 
-    private final LocalDateTime DATA = LocalDateTime.parse("2024-12-29T20:00:54.0151691", DATA_FORMATTER);
+    private final LocalDateTime DATA = LocalDateTime.parse("2025-01-01T00:00:00.0000001", DATA_FORMATTER);
 
 
     {
@@ -29,10 +29,17 @@ public class ProducerDataUtil implements DataUtil<Producer> {
         return PRODUCER_LIST;
     }
 
+    public Producer getProducerToSave(String name) {
+        return Producer.builder()
+                .id(15L)
+                .name(name)
+                .createdAt(DATA).build();
+    }
+
     public Producer getProducerToSave() {
         return Producer.builder()
                 .id(15L)
-                .name("Mappa")
+                .name("Animation")
                 .createdAt(DATA).build();
     }
 
