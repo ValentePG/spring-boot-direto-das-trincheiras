@@ -1,10 +1,9 @@
 package dev.valente.producer.controller;
 
+import dev.valente.common.FileUtil;
 import dev.valente.common.ProducerDataUtil;
-import dev.valente.producer.domain.Producer;
 import dev.valente.producer.dto.ProducerPostRequest;
 import dev.valente.producer.repository.ProducerData;
-import dev.valente.producer.repository.ProducerHardCodedRepository;
 import dev.valente.producer.service.ProducerMapperService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
@@ -16,16 +15,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.List;
 
 @Slf4j
 @WebMvcTest(controllers = ProducerController.class)
@@ -42,11 +36,8 @@ class ProducerControllerTest {
     @SpyBean
     private ProducerMapperService producerMapperService;
 
-//    @SpyBean
-//    private ProducerHardCodedRepository producerHardCodedRepository;
-
     @Autowired
-    private ResourceLoader resourceLoader;
+    private FileUtil fileUtil;
 
     @Autowired
     private MockMvc mockMvc;
@@ -68,10 +59,10 @@ class ProducerControllerTest {
     @Order(1)
     void findAll_shouldReturnListOfproducers() throws Exception {
 
-        var response = readResourceFile("/producer/get/request/get_allproducers_200.json");
+        var response = fileUtil.readResourceFile("/producer/get/request/get_allproducers_200.json");
 
         mockMvc.perform(MockMvcRequestBuilders.get(URL)
-                .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().json(response));
@@ -83,7 +74,7 @@ class ProducerControllerTest {
     @Order(2)
     void findByName_shouldReturnProducer_whenSuccessfull() throws Exception {
 
-        var response = readResourceFile("/producer/get/request/get_findbyname_200.json");
+        var response = fileUtil.readResourceFile("/producer/get/request/get_findbyname_200.json");
 
         mockMvc.perform(MockMvcRequestBuilders.get(URL + "/find")
                         .param("name", "Animation"))
@@ -115,7 +106,7 @@ class ProducerControllerTest {
 
         Long id = dataUtil.getProducerToFind().getId();
 
-        var response = readResourceFile("/producer/get/request/get_findbyid_200.json");
+        var response = fileUtil.readResourceFile("/producer/get/request/get_findbyid_200.json");
 
         mockMvc.perform(MockMvcRequestBuilders.get(URL + "/{id}", id))
                 .andDo(MockMvcResultHandlers.print())
@@ -144,23 +135,21 @@ class ProducerControllerTest {
     @Order(6)
     void create_shouldSaveProducer_whenSuccessfull() throws Exception {
 
-        var request = readResourceFile("/producer/post/request/post_createproducer_200.json");
+        var request = fileUtil.readResourceFile("/producer/post/request/post_createproducer_200.json");
 
         var response = dataUtil.getProducerToSave("Mappa");
 
-        var responseFile = readResourceFile("/producer/post/response/post_responsecreateproducer_201.json");
-
-//        BDDMockito.when(producerHardCodedRepository.save(ArgumentMatchers.any())).thenReturn(response);
+        var responseFile = fileUtil.readResourceFile("/producer/post/response/post_responsecreateproducer_201.json");
 
         BDDMockito.when(producerMapperService
                         .toProducer(ArgumentMatchers.any(ProducerPostRequest.class)))
-                        .thenReturn(response);
+                .thenReturn(response);
 
         mockMvc.perform(MockMvcRequestBuilders.post(URL)
                         .header("x-api-key", 1234)
                         .header("x-api-teste", 1234)
                         .content(request)
-                .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andExpect(MockMvcResultMatchers.content().json(responseFile));
@@ -199,7 +188,7 @@ class ProducerControllerTest {
     @Order(9)
     void replace_shouldReplaceProducer_whenSuccessfull() throws Exception {
 
-        var request = readResourceFile("producer/put/request/put_replaceproducer_200.json");
+        var request = fileUtil.readResourceFile("producer/put/request/put_replaceproducer_200.json");
 
         mockMvc.perform(MockMvcRequestBuilders.put(URL)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -215,8 +204,7 @@ class ProducerControllerTest {
     @Order(10)
     void replace_shouldReturnNotFound_whenFailed() throws Exception {
 
-        var request = readResourceFile("producer/put/request/put_replaceproducer_404.json");
-
+        var request = fileUtil.readResourceFile("producer/put/request/put_replaceproducer_404.json");
 
 
         mockMvc.perform(MockMvcRequestBuilders.put(URL)
@@ -227,15 +215,11 @@ class ProducerControllerTest {
                 .andExpect(MockMvcResultMatchers.status().reason("Producer not found"));
 
 
-
     }
 
-    private void mockList(){
+    private void mockList() {
         BDDMockito.when(producerData.getProducers()).thenReturn(dataUtil.getList());
     }
 
-    private String readResourceFile(String fileName) throws IOException {
-        var file = resourceLoader.getResource("classpath:%s".formatted(fileName)).getFile();
-        return new String(Files.readAllBytes(file.toPath()));
-    }
+
 }

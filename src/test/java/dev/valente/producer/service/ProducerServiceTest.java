@@ -1,9 +1,7 @@
 package dev.valente.producer.service;
 
 
-import dev.valente.common.DataUtil;
 import dev.valente.common.ProducerDataUtil;
-import dev.valente.producer.domain.Producer;
 import dev.valente.producer.repository.ProducerHardCodedRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;

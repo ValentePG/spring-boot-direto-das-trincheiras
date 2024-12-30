@@ -1,7 +1,6 @@
 package dev.valente.producer.repository;
 
 import dev.valente.common.ProducerDataUtil;
-import dev.valente.producer.domain.Producer;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;

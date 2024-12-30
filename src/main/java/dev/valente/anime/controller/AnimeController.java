@@ -34,7 +34,7 @@ public class AnimeController {
     }
 
     @GetMapping("find")
-    public ResponseEntity<AnimeGetResponse> findFiltered(@RequestParam String name) {
+    public ResponseEntity<AnimeGetResponse> findByName(@RequestParam String name) {
 
         var anime = animeService.findByNameOrThrowNotFound(name);
 
@@ -44,10 +44,10 @@ public class AnimeController {
 
     }
 
-    @GetMapping("{animeId}")
-    public ResponseEntity<AnimeGetResponse> findVariable(@PathVariable Long animeId) {
+    @GetMapping("{id}")
+    public ResponseEntity<AnimeGetResponse> findById(@PathVariable Long id) {
 
-        var anime = animeService.findByIdOrThrowNotFound(animeId);
+        var anime = animeService.findByIdOrThrowNotFound(id);
 
         var animeGetResponse = mapperService.toAnimeGetResponse(anime);
 
@@ -64,10 +64,10 @@ public class AnimeController {
         return ResponseEntity.status(HttpStatus.CREATED).body(animePostResponse);
     }
 
-    @DeleteMapping("{animeId}")
-    public ResponseEntity<Void> delete(@PathVariable Long animeId) {
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
 
-        animeService.deleteById(animeId);
+        animeService.deleteById(id);
 
         return ResponseEntity.noContent().build();
     }
