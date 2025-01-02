@@ -1,0 +1,8 @@
+#  file:
+#    name: logs/minha-aplicacao.log
+#    path: logs
+
+database:
+  username: ${MONGO_USERNAME:gustavo}
+  password: ${MONGO_PASSWORD:3033230}
+  url: ${MONGO_URL:localhost:3333}

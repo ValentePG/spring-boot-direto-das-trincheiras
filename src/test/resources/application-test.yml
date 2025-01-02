@@ -1,0 +1,4 @@
+database:
+  username: ${TEST_USERNAME:gustavo}
+  password: ${TEST_PASSWORD:3030}
+  url: ${TEST_URL:localhost:3203}

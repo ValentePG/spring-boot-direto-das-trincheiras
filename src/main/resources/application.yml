@@ -5,6 +5,9 @@ spring:
   threads:
     virtual:
       enabled: true
+  profiles:
+    active: mysql
+
 server:
   servlet:
     context-path: /
@@ -20,3 +23,8 @@ logging:
 #  file:
 #    name: logs/minha-aplicacao.log
 #    path: logs
+
+database:
+  username: ${LOCAL_USERNAME:joaquin}
+  password: ${LOCAL_PASSWORD:3030}
+  url: ${LOCAL_URL:localhost:3203}

@@ -11,6 +11,7 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
@@ -25,6 +26,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @WebMvcTest(controllers = ProducerController.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ComponentScan(basePackages = "dev.valente")
+//@ActiveProfiles("test")
 //@Import({...})
 class ProducerControllerTest {
 
@@ -48,6 +50,15 @@ class ProducerControllerTest {
     @Autowired
     private ProducerDataUtil dataUtil;
 
+    @Value("${database.url}")
+    private String databaseUrl;
+
+    @Value("${database.username}")
+    private String username;
+
+    @Value("${database.password}")
+    private String password;
+
     @BeforeEach
     void setUp() {
         mockList();
@@ -58,6 +69,10 @@ class ProducerControllerTest {
     @DisplayName("GET v1/producers should return list of all producers")
     @Order(1)
     void findAll_shouldReturnListOfproducers() throws Exception {
+
+        System.out.println(databaseUrl);
+        System.out.println(username);
+        System.out.println(password);
 
         var response = fileUtil.readResourceFile("/producer/get/request/get_allproducers_200.json");
 

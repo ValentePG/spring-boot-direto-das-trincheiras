@@ -1,0 +1,8 @@
+#  file:
+#    name: logs/minha-aplicacao.log
+#    path: logs
+
+database:
+  username: ${MYSQL_USERNAME:gabriel}
+  password: ${MYSQL_PASSWORD:3030}
+  url: ${MYSQL_URL:localhost:5050}

@@ -1,0 +1,4 @@
+database:
+  username: "gomes"
+  password: "302435"
+  url: "localhost:321"
