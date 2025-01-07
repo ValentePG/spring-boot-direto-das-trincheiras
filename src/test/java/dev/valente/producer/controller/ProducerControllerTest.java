@@ -6,12 +6,15 @@ import dev.valente.producer.dto.ProducerPostRequest;
 import dev.valente.producer.repository.ProducerData;
 import dev.valente.producer.service.ProducerMapperService;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.ArgumentMatchers;
 import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
@@ -21,6 +24,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import java.util.List;
+import java.util.stream.Stream;
 
 @Slf4j
 @WebMvcTest(controllers = ProducerController.class)
@@ -50,14 +56,6 @@ class ProducerControllerTest {
     @Autowired
     private ProducerDataUtil dataUtil;
 
-    @Value("${database.url}")
-    private String databaseUrl;
-
-    @Value("${database.username}")
-    private String username;
-
-    @Value("${database.password}")
-    private String password;
 
     @BeforeEach
     void setUp() {
@@ -68,11 +66,7 @@ class ProducerControllerTest {
     @Test
     @DisplayName("GET v1/producers should return list of all producers")
     @Order(1)
-    void findAll_shouldReturnListOfproducers() throws Exception {
-
-        System.out.println(databaseUrl);
-        System.out.println(username);
-        System.out.println(password);
+    void findAll_shouldReturnListOfAllproducers() throws Exception {
 
         var response = fileUtil.readResourceFile("/producer/get/request/get_allproducers_200.json");
 
@@ -104,12 +98,13 @@ class ProducerControllerTest {
     @Order(3)
     void findByName_shouldReturnNotFound_whenFailed() throws Exception {
 
+        var response = fileUtil.readResourceFile("/exception/producer_notfoundexception_404.json");
 
         mockMvc.perform(MockMvcRequestBuilders.get(URL + "/find")
                         .param("name", "Mappa"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
-                .andExpect(MockMvcResultMatchers.status().reason("Producer not found"));
+                .andExpect(MockMvcResultMatchers.content().json(response));
 
 
     }
@@ -117,7 +112,7 @@ class ProducerControllerTest {
     @Test
     @DisplayName("GET v1/producers/{id} should return a producer named Animation")
     @Order(4)
-    void findById_shouldReturnHouse_whenSuccessfull() throws Exception {
+    void findById_shouldReturnProducer_whenSuccessfull() throws Exception {
 
         Long id = dataUtil.getProducerToFind().getId();
 
@@ -135,12 +130,14 @@ class ProducerControllerTest {
     @Order(5)
     void findById_shouldReturnNotFound_whenFailed() throws Exception {
 
+        var response = fileUtil.readResourceFile("/exception/producer_notfoundexception_404.json");
+
         Long id = 50L;
 
         mockMvc.perform(MockMvcRequestBuilders.get(URL + "/{id}", id))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
-                .andExpect(MockMvcResultMatchers.status().reason("Producer not found"));
+                .andExpect(MockMvcResultMatchers.content().json(response));
 
 
     }
@@ -172,11 +169,47 @@ class ProducerControllerTest {
 
     }
 
+    @ParameterizedTest
+    @MethodSource("postParameterizedTest")
+    @DisplayName("POST v1/producers with invalid data should return NOT FOUND")
+    @Order(7)
+    void create_shouldReturnNotFoundWithInvalidData_whenFailed(String fileName, String error) throws Exception {
+        var request = fileUtil.readResourceFile(fileName);
+
+        var mockResponse = mockMvc.perform(MockMvcRequestBuilders.post(URL)
+                        .header("x-api-key", 1234)
+                        .header("x-api-teste", 1234)
+                        .content(request)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andReturn();
+
+        var mockResponseResolvedException = mockResponse.getResolvedException();
+        Assertions.assertThat(mockResponseResolvedException).isNotNull();
+
+        Assertions.assertThat(mockResponseResolvedException.getMessage()).contains(error);
+    }
+
+    private static Stream<Arguments> postParameterizedTest() {
+        var error = "O nome não pode estar em branco";
+
+        return Stream.of(
+                Arguments.of("/producer/post/request/post_createproducer-empty_400.json",
+                        error),
+                Arguments.of("/producer/post/request/post_createproducer-blank_400.json",
+                        error),
+                Arguments.of("/producer/post/request/post_createproducer-null_400.json",
+                        error)
+        );
+    }
+
     @Test
     @DisplayName("DELETE v1/producers/{id} should remove a producer")
-    @Order(7)
+    @Order(8)
     void deleteById_shouldRemoveProducer_whenSuccessfull() throws Exception {
         var id = dataUtil.getProducerToFind().getId();
+
 
         mockMvc.perform(MockMvcRequestBuilders.delete(URL + "/{id}", id))
                 .andDo(MockMvcResultHandlers.print())
@@ -187,20 +220,22 @@ class ProducerControllerTest {
 
     @Test
     @DisplayName("DELETE v1/producers/{id} should return NOT FOUND")
-    @Order(8)
+    @Order(9)
     void deleteById_shouldReturnNotFound_whenFailed() throws Exception {
         var id = 50L;
+
+        var response = fileUtil.readResourceFile("/exception/producer_notfoundexception_404.json");
 
         mockMvc.perform(MockMvcRequestBuilders.delete(URL + "/{id}", id))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
-                .andExpect(MockMvcResultMatchers.status().reason("Producer not found"));
+                .andExpect(MockMvcResultMatchers.content().json(response));
 
     }
 
     @Test
     @DisplayName("PUT v1/producers should replace a producer")
-    @Order(9)
+    @Order(10)
     void replace_shouldReplaceProducer_whenSuccessfull() throws Exception {
 
         var request = fileUtil.readResourceFile("producer/put/request/put_replaceproducer_200.json");
@@ -216,20 +251,55 @@ class ProducerControllerTest {
 
     @Test
     @DisplayName("PUT v1/producers should return NOT FOUND")
-    @Order(10)
+    @Order(11)
     void replace_shouldReturnNotFound_whenFailed() throws Exception {
 
         var request = fileUtil.readResourceFile("producer/put/request/put_replaceproducer_404.json");
 
+        var response = fileUtil.readResourceFile("/exception/producer_notfoundexception_404.json");
 
         mockMvc.perform(MockMvcRequestBuilders.put(URL)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(request))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
-                .andExpect(MockMvcResultMatchers.status().reason("Producer not found"));
+                .andExpect(MockMvcResultMatchers.content().json(response));
 
 
+    }
+
+    @ParameterizedTest
+    @MethodSource("putParameterizedTest")
+    @DisplayName("PUT v1/producers should return BAD REQUEST when fields are blank,empty or null")
+    @Order(12)
+    void replace_shouldReturnBadRequest_whenFieldsAreInvalid(String fileName, List<String> errors) throws Exception {
+        var request = fileUtil.readResourceFile(fileName);
+
+        var mockResponse = mockMvc.perform(MockMvcRequestBuilders.put(URL)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(request))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andReturn();
+
+        var mockResponseResolvedException = mockResponse.getResolvedException();
+
+        Assertions.assertThat(mockResponseResolvedException).isNotNull();
+
+        Assertions.assertThat(mockResponseResolvedException.getMessage()).contains(errors);
+    }
+
+    private static Stream<Arguments> putParameterizedTest() {
+
+        var error = "O nome não pode estar em branco";
+        var errorId = "O id não pode ser nulo";
+        var listOfErrors = List.of(error, errorId);
+
+
+        return Stream.of(
+                Arguments.of("/producer/put/request/put_replace-empty_400.json", listOfErrors),
+                Arguments.of("/producer/put/request/put_replace-blank_400.json", listOfErrors)
+        );
     }
 
     private void mockList() {

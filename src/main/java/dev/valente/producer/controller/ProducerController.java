@@ -6,6 +6,7 @@ import dev.valente.producer.dto.ProducerPutRequest;
 import dev.valente.producer.service.ProducerMapperService;
 import dev.valente.producer.service.ProducerService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -61,7 +62,7 @@ public class ProducerController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             headers = {"x-api-key", "x-api-teste"})
-    public ResponseEntity<ProducerGetResponse> create(@RequestBody ProducerPostRequest producerPostRequest,
+    public ResponseEntity<ProducerGetResponse> create(@RequestBody @Valid ProducerPostRequest producerPostRequest,
                                                       @RequestHeader HttpHeaders headers,
                                                       HttpServletRequest request) {
 
@@ -82,7 +83,7 @@ public class ProducerController {
     }
 
     @PutMapping
-    public ResponseEntity<Void> replace(@RequestBody ProducerPutRequest producerPutRequest) {
+    public ResponseEntity<Void> replace(@RequestBody @Valid ProducerPutRequest producerPutRequest) {
         log.info("Updating producer with id {}", producerPutRequest.getId());
 
         var producerToRemove = producerMapperService.toProducer(producerPutRequest);

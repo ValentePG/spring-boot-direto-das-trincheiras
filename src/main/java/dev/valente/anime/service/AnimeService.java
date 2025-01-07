@@ -2,10 +2,9 @@ package dev.valente.anime.service;
 
 import dev.valente.anime.domain.Anime;
 import dev.valente.anime.repository.AnimeRepository;
+import dev.valente.user_service.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -21,12 +20,12 @@ public class AnimeService {
 
     public Anime findByIdOrThrowNotFound(Long id) {
         return animeRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Anime not Found"));
+                .orElseThrow(() -> new NotFoundException("Anime not Found"));
     }
 
     public Anime findByNameOrThrowNotFound(String name) {
         return animeRepository.findByName(name)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Anime not Found"));
+                .orElseThrow(() -> new NotFoundException("Anime not Found"));
     }
 
     public Anime save(Anime anime) {

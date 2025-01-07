@@ -6,6 +6,7 @@ import dev.valente.anime.dto.AnimePostResponse;
 import dev.valente.anime.dto.AnimePutRequest;
 import dev.valente.anime.service.AnimeMapperService;
 import dev.valente.anime.service.AnimeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -55,7 +56,7 @@ public class AnimeController {
     }
 
     @PostMapping
-    public ResponseEntity<AnimePostResponse> create(@RequestBody AnimePostRequest animePostRequest) {
+    public ResponseEntity<AnimePostResponse> create(@RequestBody @Valid AnimePostRequest animePostRequest) {
 
         var anime = mapperService.toAnime(animePostRequest);
         animeService.save(anime);
@@ -73,7 +74,7 @@ public class AnimeController {
     }
 
     @PutMapping
-    public ResponseEntity<Void> update(@RequestBody AnimePutRequest request) {
+    public ResponseEntity<Void> update(@RequestBody @Valid AnimePutRequest request) {
 
         log.debug("Request to update anime : {}", request);
 

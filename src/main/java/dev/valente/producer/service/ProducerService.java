@@ -2,10 +2,9 @@ package dev.valente.producer.service;
 
 import dev.valente.producer.domain.Producer;
 import dev.valente.producer.repository.ProducerHardCodedRepository;
+import dev.valente.user_service.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -26,12 +25,12 @@ public class ProducerService {
 
     public Producer findByNameOrThrowNotFound(String name) {
         return producerRepository.findProducerByName(name)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Producer not found"));
+                .orElseThrow(() -> new NotFoundException("Producer not found"));
     }
 
     public Producer findByIdOrThrowNotFound(Long id) {
         return producerRepository.findProducerById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Producer not found"));
+                .orElseThrow(() -> new NotFoundException("Producer not found"));
     }
 
     public void delete(Long producerId) {

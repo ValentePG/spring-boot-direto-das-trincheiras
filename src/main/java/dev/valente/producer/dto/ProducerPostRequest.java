@@ -1,5 +1,6 @@
 package dev.valente.producer.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,5 +8,6 @@ import lombok.Setter;
 @Setter
 public class ProducerPostRequest {
 
+    @NotBlank(message = "O nome não pode estar em branco")
     private String name;
 }
