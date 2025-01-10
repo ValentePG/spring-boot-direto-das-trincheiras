@@ -7,6 +7,14 @@ spring:
       enabled: true
   profiles:
     active: mysql
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/anime_service?useTimezone=true&serverTimezone=UTC&createDatabaseIfNotExist=true
+    password: valente
 
 server:
   servlet:

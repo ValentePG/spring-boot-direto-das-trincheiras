@@ -59,8 +59,8 @@ public class AnimeController {
     public ResponseEntity<AnimePostResponse> create(@RequestBody @Valid AnimePostRequest animePostRequest) {
 
         var anime = mapperService.toAnime(animePostRequest);
-        animeService.save(anime);
-        var animePostResponse = mapperService.toAnimePostResponse(anime);
+        var savedAnime = animeService.save(anime);
+        var animePostResponse = mapperService.toAnimePostResponse(savedAnime);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(animePostResponse);
     }

@@ -34,6 +34,10 @@ public class AnimeDataUtil implements DataUtil<Anime> {
                 .name("ORBE").build();
     }
 
+    public Anime getThird() {
+        return getList().get(2);
+    }
+
     public Anime getAnimeToFind() {
         return getFirst();
     }

@@ -1,9 +1,11 @@
 package dev.valente.anime.service;
 
 import dev.valente.anime.domain.Anime;
-import dev.valente.anime.repository.AnimeRepository;
+import dev.valente.anime.repository.AnimeRepositoryJPA;
 import dev.valente.common.AnimeDataUtil;
 import dev.valente.common.DataUtil;
+import dev.valente.user_service.exception.NotFoundException;
+import dev.valente.user_service.exception.UserNameAlreadyExists;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,7 +14,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
@@ -25,14 +26,9 @@ class AnimeServiceTest {
     private AnimeService animeService;
 
     @Mock
-    private AnimeRepository animeRepository;
+    private AnimeRepositoryJPA animeRepository;
 
-    private DataUtil<Anime> dataUtil;
-
-    @BeforeEach
-    public void setUp() {
-        dataUtil = new AnimeDataUtil();
-    }
+    private final AnimeDataUtil dataUtil = new AnimeDataUtil();
 
     @Test
     @Order(1)
@@ -71,7 +67,8 @@ class AnimeServiceTest {
         BDDMockito.when(animeRepository.findById(expectedAnime.getId())).thenReturn(Optional.empty());
 
         Assertions.assertThatThrownBy(() -> animeService.findByIdOrThrowNotFound(expectedAnime.getId()))
-                .isInstanceOf(ResponseStatusException.class);
+                .isInstanceOf(NotFoundException.class)
+                .hasMessage("404 NOT_FOUND \"Anime not Found\"");
     }
 
     @Test
@@ -80,7 +77,7 @@ class AnimeServiceTest {
     void findByNameOrThrowException_shouldReturnProducer_whenSuccessfull() {
         var expectedAnime = dataUtil.getList().getFirst();
 
-        BDDMockito.when(animeRepository.findByName(expectedAnime.getName())).thenReturn(Optional.of(expectedAnime));
+        BDDMockito.when(animeRepository.findAnimeByName(expectedAnime.getName())).thenReturn(Optional.of(expectedAnime));
 
         var anime = animeService.findByNameOrThrowNotFound(expectedAnime.getName());
 
@@ -94,10 +91,11 @@ class AnimeServiceTest {
     void findByNameOrThrowException_shouldThrowException_whenAnimeNotFound() {
         var expectedAnime = dataUtil.getList().getFirst();
 
-        BDDMockito.when(animeRepository.findByName(expectedAnime.getName())).thenReturn(Optional.empty());
+        BDDMockito.when(animeRepository.findAnimeByName(expectedAnime.getName())).thenReturn(Optional.empty());
 
         Assertions.assertThatThrownBy(() -> animeService.findByNameOrThrowNotFound(expectedAnime.getName()))
-                .isInstanceOf(ResponseStatusException.class);
+                .isInstanceOf(NotFoundException.class)
+                .hasMessage("404 NOT_FOUND \"Anime not Found\"");
     }
 
     @Test
@@ -105,35 +103,53 @@ class AnimeServiceTest {
     @DisplayName("Should save anime and return anime saved")
     void save_ShouldSaveAnime_whenSuccessfull() {
 
-        var animeToSave = Anime.builder().id(14L).name("AlgumAnime").build();
+        var animeToSave = Anime.builder().name("AlgumAnime").build();
 
-        BDDMockito.when(animeRepository.save(animeToSave)).thenReturn(animeToSave);
+        var animeSaved = Anime.builder().name("AlgumAnime").id(14L).build();
+
+        BDDMockito.when(animeRepository.findAnimeByName(animeToSave.getName())).thenReturn(Optional.empty());
+
+        BDDMockito.when(animeRepository.save(animeToSave)).thenReturn(animeSaved);
 
         var anime = animeService.save(animeToSave);
 
         Assertions.assertThat(anime)
-                .isEqualTo(animeToSave);
+                .isEqualTo(animeSaved);
     }
 
     @Test
     @Order(7)
+    @DisplayName("Should return name already exists")
+    void save_ShouldReturnNameAlreadyExists_whenFailed() {
+
+        var anime = dataUtil.getAnimeToFind();
+
+        BDDMockito.when(animeRepository.findAnimeByName(anime.getName())).thenReturn(Optional.of(anime));
+
+        Assertions.assertThatThrownBy(() -> animeService.save(anime))
+                .isInstanceOf(UserNameAlreadyExists.class)
+                .hasMessage("400 BAD_REQUEST \"O nome %s já está cadastrado\"".formatted(anime.getName()));
+    }
+
+    @Test
+    @Order(8)
     @DisplayName("Should remove anime")
     void remove_ShouldRemoveAnime_whenSuccessfull() {
         var animeToRemove = dataUtil.getList().getFirst();
 
         BDDMockito.when(animeRepository.findById(animeToRemove.getId())).thenReturn(Optional.of(animeToRemove));
 
-        BDDMockito.doNothing().when(animeRepository).remove(animeToRemove);
+        BDDMockito.doNothing().when(animeRepository).delete(animeToRemove);
 
         Assertions.assertThatNoException()
                 .isThrownBy(() -> animeService.deleteById(animeToRemove.getId()));
 
         Mockito.verify(animeRepository, Mockito.times(1)).findById(animeToRemove.getId());
-        Mockito.verify(animeRepository, Mockito.times(1)).remove(animeToRemove);
+        Mockito.verify(animeRepository, Mockito.times(1)).delete(animeToRemove);
     }
 
     @Test
-    @Order(8)
+    @Order(9)
     @DisplayName("Should throw not found exception")
     void remove_ShouldThrowNotFoundException_whenSuccessfull() {
         var animeToRemove = dataUtil.getList().getFirst();
@@ -141,14 +157,15 @@ class AnimeServiceTest {
         BDDMockito.when(animeRepository.findById(animeToRemove.getId())).thenReturn(Optional.empty());
 
         Assertions.assertThatThrownBy(() -> animeService.deleteById(animeToRemove.getId()))
-                .isInstanceOf(ResponseStatusException.class);
+                .isInstanceOf(NotFoundException.class)
+                .hasMessage("404 NOT_FOUND \"Anime not Found\"");
 
         Mockito.verify(animeRepository, Mockito.times(1)).findById(animeToRemove.getId());
-        Mockito.verify(animeRepository, Mockito.times(0)).remove(animeToRemove);
+        Mockito.verify(animeRepository, Mockito.times(0)).delete(animeToRemove);
     }
 
     @Test
-    @Order(9)
+    @Order(10)
     @DisplayName("Should replace existent anime by new anime")
     void replace_ShouldReplaceAnime_whenSuccessfull() {
         var animeToReplace = dataUtil.getList().getFirst();
@@ -157,18 +174,45 @@ class AnimeServiceTest {
                 .build();
 
         BDDMockito.when(animeRepository.findById(animeToReplace.getId())).thenReturn(Optional.of(animeToReplace));
-        BDDMockito.doNothing().when(animeRepository).replace(animeToReplace, newAnime);
-
+        BDDMockito.when(animeRepository.save(animeToReplace)).thenReturn(animeToReplace);
+        BDDMockito.when(animeRepository.findAnimeByNameAndIdNot(newAnime.getName(), newAnime.getId()))
+                .thenReturn(Optional.empty());
 
         Assertions.assertThatNoException()
                 .isThrownBy(() -> animeService.replace(newAnime));
 
         Mockito.verify(animeRepository, Mockito.times(1)).findById(animeToReplace.getId());
-        Mockito.verify(animeRepository, Mockito.times(1)).replace(animeToReplace, newAnime);
+        Mockito.verify(animeRepository, Mockito.times(1)).save(animeToReplace);
+        Mockito.verify(animeRepository, Mockito.times(1)).findAnimeByNameAndIdNot(newAnime.getName(), newAnime.getId());
     }
 
     @Test
-    @Order(10)
+    @Order(11)
+    @DisplayName("Should throw name already exists")
+    void replace_ShouldThrowNameLreadyExist_whenFailed() {
+
+        var animeToReplace = dataUtil.getAnimeToFind();
+        var newAnime = Anime.builder().id(animeToReplace.getId())
+                .name("AlgumAnime")
+                .build();
+
+        BDDMockito.when(animeRepository.findById(animeToReplace.getId())).thenReturn(Optional.of(animeToReplace));
+        BDDMockito.when(animeRepository.findAnimeByNameAndIdNot(newAnime.getName(), newAnime.getId()))
+                .thenReturn(Optional.of(animeToReplace));
+
+        Assertions.assertThatThrownBy(() -> animeService.replace(newAnime))
+                .isInstanceOf(UserNameAlreadyExists.class)
+                .hasMessage("400 BAD_REQUEST \"O nome %s já está cadastrado\"".formatted(animeToReplace.getName()));
+
+        Mockito.verify(animeRepository, Mockito.times(1)).findById(animeToReplace.getId());
+        Mockito.verify(animeRepository, Mockito.times(0)).save(animeToReplace);
+        Mockito.verify(animeRepository, Mockito.times(1)).findAnimeByNameAndIdNot(newAnime.getName(), newAnime.getId());
+    }
+
+
+
+    @Test
+    @Order(12)
     @DisplayName("Should throw not found exception")
     void replace_ShouldThrowNotFoundException_whenSuccessfull() {
 
@@ -180,9 +224,10 @@ class AnimeServiceTest {
         BDDMockito.when(animeRepository.findById(animeToReplace.getId())).thenReturn(Optional.empty());
 
         Assertions.assertThatThrownBy(() -> animeService.replace(newAnime))
-                .isInstanceOf(ResponseStatusException.class);
+                .isInstanceOf(NotFoundException.class)
+                .hasMessage("404 NOT_FOUND \"Anime not Found\"");
 
         Mockito.verify(animeRepository, Mockito.times(1)).findById(animeToReplace.getId());
-        Mockito.verify(animeRepository, Mockito.times(0)).replace(animeToReplace, newAnime);
+        Mockito.verify(animeRepository, Mockito.times(0)).save(animeToReplace);
     }
 }
