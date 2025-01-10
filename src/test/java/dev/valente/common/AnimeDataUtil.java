@@ -1,6 +1,6 @@
 package dev.valente.common;
 
-import dev.valente.anime.domain.Anime;
+import dev.valente.domain.Anime;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

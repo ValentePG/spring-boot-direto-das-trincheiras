@@ -1,6 +1,6 @@
 package dev.valente.common;
 
-import dev.valente.producer.domain.Producer;
+import dev.valente.domain.Producer;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -70,6 +70,10 @@ public class ProducerDataUtil implements DataUtil<Producer> {
 
     private Producer getFirst() {
         return PRODUCER_LIST.getFirst();
+    }
+
+    public Producer getThird() {
+        return PRODUCER_LIST.get(2);
     }
 
 
