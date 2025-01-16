@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -45,6 +48,8 @@ class AnimeControllerTest {
 
     @Autowired
     private FileUtil fileUtil;
+    @Autowired
+    private AnimeDataUtil animeDataUtil;
 
     @BeforeEach
     void setUp() {
@@ -56,7 +61,9 @@ class AnimeControllerTest {
     @Order(1)
     void findAll_shouldReturnListOfAllAnimes_whenSuccessful() throws Exception {
 
-        var response = fileUtil.readResourceFile("anime/get/request/get_allanimes_200.json");
+        var response = fileUtil.readResourceFile("anime/get/response/get_allanimes_200.json");
+
+
 
         mockMvc.perform(MockMvcRequestBuilders.get(URL)
                         .contentType(MediaType.APPLICATION_JSON))
@@ -66,8 +73,28 @@ class AnimeControllerTest {
     }
 
     @Test
-    @DisplayName("GET /v1/animes/{id} should return anime by given id")
+    @DisplayName("GET /v1/animes/paginated should return a paginated list of animes")
     @Order(2)
+    void findAllPaginated_shouldReturnListPaginatedAnimes_whenSuccessful() throws Exception {
+
+        var response = fileUtil.readResourceFile("anime/get/response/get_animespaginated_200.json");
+
+        var pageRequest = PageRequest.of(0, animeDataUtil.getList().size());
+
+        var animePage = new PageImpl<>(animeDataUtil.getList(), pageRequest, 1);
+
+        BDDMockito.when(animeRepository.findAll(BDDMockito.any(Pageable.class))).thenReturn(animePage);
+
+        mockMvc.perform(MockMvcRequestBuilders.get(URL +"/paginated")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().json(response));
+    }
+
+    @Test
+    @DisplayName("GET /v1/animes/{id} should return anime by given id")
+    @Order(3)
     void findById_shouldReturnAnime_whenSuccessful() throws Exception {
 
         var expectedUser = dataUtil.getAnimeToFind();
@@ -84,7 +111,7 @@ class AnimeControllerTest {
 
     @Test
     @DisplayName("GET /v1/animes/{id} should return NOT FOUND")
-    @Order(3)
+    @Order(4)
     void findById_shouldReturnNotFound_whenFailed() throws Exception {
 
         var response = fileUtil.readResourceFile("exception/anime_notfoundexception_404.json");
@@ -101,7 +128,7 @@ class AnimeControllerTest {
 
     @Test
     @DisplayName("GET /v1/animes/find?name=Naruto should return anime by given name")
-    @Order(4)
+    @Order(5)
     void findByName_shouldReturnAnime_whenSuccessful() throws Exception {
 
         var response = fileUtil.readResourceFile("anime/get/request/get_findbyid_200.json");
@@ -119,7 +146,7 @@ class AnimeControllerTest {
 
     @Test
     @DisplayName("GET /v1/animes/find?name=JOJO should return NOT FOUND")
-    @Order(5)
+    @Order(6)
     void findByName_shouldReturnNotFound_whenFailed() throws Exception {
 
         var response = fileUtil.readResourceFile("exception/anime_notfoundexception_404.json");
@@ -137,7 +164,7 @@ class AnimeControllerTest {
 
     @Test
     @DisplayName("POST /v1/animes should save and return anime")
-    @Order(6)
+    @Order(7)
     void create_shouldCreateAnimeAndReturn_whenSuccessfull() throws Exception {
 
         var request = fileUtil.readResourceFile("anime/post/request/post_createanime_200.json");
@@ -161,7 +188,7 @@ class AnimeControllerTest {
     @ParameterizedTest
     @MethodSource("postParameterizedTest")
     @DisplayName("POST v1/animes with invalid data should return BAD REQUEST")
-    @Order(7)
+    @Order(8)
     void create_shouldReturnNotFoundWithInvalidData_whenFailed(String fileName, String error) throws Exception {
         var request = fileUtil.readResourceFile(fileName);
 
@@ -193,7 +220,7 @@ class AnimeControllerTest {
 
     @Test
     @DisplayName("DELETE /v1/animes/{id} should remove anime")
-    @Order(7)
+    @Order(9)
     void delete_shouldDeleteAnime_whenSuccessfull() throws Exception {
 
         var expectedUserToDelete = dataUtil.getAnimeToFind();
@@ -208,7 +235,7 @@ class AnimeControllerTest {
 
     @Test
     @DisplayName("DELETE /v1/animes/{id} should return NOT FOUND")
-    @Order(8)
+    @Order(10)
     void delete_shouldReturnNotFound_whenFailed() throws Exception {
 
         var response = fileUtil.readResourceFile("exception/anime_notfoundexception_404.json");
@@ -226,7 +253,7 @@ class AnimeControllerTest {
 
     @Test
     @DisplayName("PUT /v1/animes should replace anime")
-    @Order(9)
+    @Order(11)
     void update_shouldReplaceAnime_whenSuccessfull() throws Exception {
 
         var request = fileUtil.readResourceFile("anime/put/request/put_replaceanime_200.json");
@@ -245,7 +272,7 @@ class AnimeControllerTest {
 
     @Test
     @DisplayName("PUT /v1/animes should return NOT FOUND")
-    @Order(10)
+    @Order(12)
     void update_shouldReturnNotFound_whenFailed() throws Exception {
 
         var request = fileUtil.readResourceFile("anime/put/request/put_replaceanime_404.json");
@@ -267,7 +294,7 @@ class AnimeControllerTest {
     @ParameterizedTest
     @MethodSource("putParameterizedTest")
     @DisplayName("PUT v1/animes should return BAD REQUEST when fields are blank,empty or null")
-    @Order(11)
+    @Order(13)
     void update_shouldReturnBadRequest_WhenFieldsAreInvalid(String fileName, List<String> errors) throws Exception {
         var request = fileUtil.readResourceFile(fileName);
 

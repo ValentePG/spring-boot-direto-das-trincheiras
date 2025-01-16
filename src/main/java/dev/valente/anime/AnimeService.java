@@ -4,6 +4,8 @@ import dev.valente.domain.Anime;
 import dev.valente.user_service.exception.NotFoundException;
 import dev.valente.user_service.exception.UserNameAlreadyExists;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +18,10 @@ public class AnimeService {
 
     public List<Anime> findAll() {
         return animeRepository.findAll();
+    }
+
+    public Page<Anime> findAllPaginated(Pageable pageable) {
+        return animeRepository.findAll(pageable);
     }
 
     public Anime findByIdOrThrowNotFound(Long id) {

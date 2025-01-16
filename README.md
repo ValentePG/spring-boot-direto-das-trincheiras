@@ -20,6 +20,12 @@
     - Mockito
     - Junit
     - MockMvc
+  - Integração
+    - testContainers
+    - testRestTemplate
+    - RestAssured
+- Monitoramento
+  - DataSource Proxy (gavlyukovskiy)
 - Padrões de projeto
     - DTO
 - Plugins e extras
@@ -27,6 +33,7 @@
   - Surefire
   - Lombok
   - Variáveis de ambiente
+  - Biblioteca Json Unit AssertJ
 
 
 

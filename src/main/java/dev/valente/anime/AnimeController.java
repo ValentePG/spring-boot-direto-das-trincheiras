@@ -3,6 +3,8 @@ package dev.valente.anime;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +29,15 @@ public class AnimeController {
 
         return ResponseEntity.ok(animeGetResponse);
     }
+
+    @GetMapping("/paginated")
+    public ResponseEntity<Page<AnimeGetResponse>> findAllPaginated(Pageable pageable) {
+
+        var animePage = animeService.findAllPaginated(pageable).map(mapperService::toAnimeGetResponse);
+
+        return ResponseEntity.ok(animePage);
+    }
+
 
     @GetMapping("find")
     public ResponseEntity<AnimeGetResponse> findByName(@RequestParam String name) {

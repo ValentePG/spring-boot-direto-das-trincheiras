@@ -12,6 +12,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.Optional;
 
@@ -43,7 +46,26 @@ class AnimeServiceTest {
     }
 
     @Test
+    @DisplayName("Should return a page of animes")
     @Order(2)
+    void findAllPaginated_shouldReturnPageOfAnimes_whenSuccessful() throws Exception {
+
+
+        var pageRequest = PageRequest.of(0, dataUtil.getList().size());
+
+        var animePage = new PageImpl<>(dataUtil.getList(), pageRequest, 1);
+
+        BDDMockito.when(animeRepository.findAll(BDDMockito.any(Pageable.class))).thenReturn(animePage);
+
+        var animesFound = animeService.findAllPaginated(pageRequest);
+
+        Assertions.assertThat(animesFound).hasSameElementsAs(dataUtil.getList());
+
+
+    }
+
+    @Test
+    @Order(3)
     @DisplayName("Should return anime by given ID")
     void findByIdOrThrowException_shouldReturnProducer_whenSuccessfull() {
         var expectedAnime = dataUtil.getList().getFirst();
@@ -57,7 +79,7 @@ class AnimeServiceTest {
     }
 
     @Test
-    @Order(3)
+    @Order(4)
     @DisplayName("Should throw not found exception")
     void findByIdOrThrowException_shouldThrowException_whenAnimeNotFound() {
         var expectedAnime = dataUtil.getList().getFirst();
@@ -70,7 +92,7 @@ class AnimeServiceTest {
     }
 
     @Test
-    @Order(4)
+    @Order(5)
     @DisplayName("Should return anime by given name")
     void findByNameOrThrowException_shouldReturnProducer_whenSuccessfull() {
         var expectedAnime = dataUtil.getList().getFirst();
@@ -84,7 +106,7 @@ class AnimeServiceTest {
     }
 
     @Test
-    @Order(5)
+    @Order(6)
     @DisplayName("Should throw not found exception")
     void findByNameOrThrowException_shouldThrowException_whenAnimeNotFound() {
         var expectedAnime = dataUtil.getList().getFirst();
@@ -97,7 +119,7 @@ class AnimeServiceTest {
     }
 
     @Test
-    @Order(6)
+    @Order(7)
     @DisplayName("Should save anime and return anime saved")
     void save_ShouldSaveAnime_whenSuccessfull() {
 
@@ -116,7 +138,7 @@ class AnimeServiceTest {
     }
 
     @Test
-    @Order(7)
+    @Order(8)
     @DisplayName("Should return name already exists")
     void save_ShouldReturnNameAlreadyExists_whenFailed() {
 
@@ -130,7 +152,7 @@ class AnimeServiceTest {
     }
 
     @Test
-    @Order(8)
+    @Order(9)
     @DisplayName("Should remove anime")
     void remove_ShouldRemoveAnime_whenSuccessfull() {
         var animeToRemove = dataUtil.getList().getFirst();
@@ -147,7 +169,7 @@ class AnimeServiceTest {
     }
 
     @Test
-    @Order(9)
+    @Order(10)
     @DisplayName("Should throw not found exception")
     void remove_ShouldThrowNotFoundException_whenSuccessfull() {
         var animeToRemove = dataUtil.getList().getFirst();
@@ -163,7 +185,7 @@ class AnimeServiceTest {
     }
 
     @Test
-    @Order(10)
+    @Order(11)
     @DisplayName("Should replace existent anime by new anime")
     void replace_ShouldReplaceAnime_whenSuccessfull() {
         var animeToReplace = dataUtil.getList().getFirst();
@@ -185,7 +207,7 @@ class AnimeServiceTest {
     }
 
     @Test
-    @Order(11)
+    @Order(12)
     @DisplayName("Should throw name already exists")
     void replace_ShouldThrowNameLreadyExist_whenFailed() {
 
@@ -210,7 +232,7 @@ class AnimeServiceTest {
 
 
     @Test
-    @Order(12)
+    @Order(13)
     @DisplayName("Should throw not found exception")
     void replace_ShouldThrowNotFoundException_whenSuccessfull() {
 
