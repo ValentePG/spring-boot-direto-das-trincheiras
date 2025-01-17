@@ -24,6 +24,9 @@
     - testContainers
     - testRestTemplate
     - RestAssured
+- **Documentação**
+  - Swagger
+  - SpringDoc API
 - **Padrões de projeto**
     - DTO
 - **Plugins e extras**
