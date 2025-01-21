@@ -16,6 +16,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
@@ -28,7 +29,8 @@ import java.util.stream.Stream;
 @Slf4j
 @WebMvcTest(controllers = ProducerController.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@ComponentScan(basePackages = {"dev.valente.producer","dev.valente.common"})
+@ComponentScan(basePackages = {"dev.valente.producer","dev.valente.common","dev.valente.securityconfig"})
+@WithMockUser
 //@ActiveProfiles("test")
 //@Import({...})
 class ProducerControllerTest {
@@ -69,6 +71,19 @@ class ProducerControllerTest {
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().json(response));
+
+    }
+
+    @Test
+    @DisplayName("GET v1/producers should return forbidden when role is not USER")
+    @Order(1)
+    @WithMockUser(roles = "ADMIN")
+    void findAll_shouldReturnForbidden_WhenRoleIsNotUSER() throws Exception {
+
+        mockMvc.perform(MockMvcRequestBuilders.get(URL)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isForbidden());
 
     }
 

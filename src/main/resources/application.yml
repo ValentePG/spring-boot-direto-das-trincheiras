@@ -28,6 +28,9 @@ server:
 logging:
   level:
     dev.valente: debug
+    org.springframework.security: debug
+
+
 #  file:
 #    name: logs/minha-aplicacao.log
 #    path: logs

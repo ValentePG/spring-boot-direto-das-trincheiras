@@ -1,5 +1,6 @@
 package dev.valente.producer;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/v1/producers")
+@SecurityRequirement(name = "basicAuth")
 public class ProducerController {
 
     private final ProducerService producerService;
