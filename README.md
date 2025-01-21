@@ -24,14 +24,22 @@
     - testContainers
     - testRestTemplate
     - RestAssured
+- **Spring Security**
+  - Autenticação em memória
+  - Autenticação em banco
+  - Roles
+  - Segurança de endpoints
 - **Documentação**
+  - Documentação da segurança
   - Swagger
   - SpringDoc API
+  - Contract First
 - **Padrões de projeto**
     - DTO
 - **Plugins e extras**
   - MapStruct
   - Surefire
+  - Failsafe
   - Lombok
   - Variáveis de ambiente
   - Biblioteca Json Unit AssertJ
