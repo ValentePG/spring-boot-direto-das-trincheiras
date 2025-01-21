@@ -25,7 +25,7 @@ public class ProducerController {
     private final ProducerMapperService producerMapperService;
 
     @GetMapping
-    public ResponseEntity<List<ProducerGetResponse>> findAll() {
+    public ResponseEntity<List<ProducerGetResponse>> findAllProducers() {
 
         var producerGetResponse = producerService.findAll()
                 .stream()
@@ -36,7 +36,7 @@ public class ProducerController {
     }
 
     @GetMapping("find")
-    public ResponseEntity<ProducerGetResponse> findByName(@RequestParam String name) {
+    public ResponseEntity<ProducerGetResponse> findProducerByName(@RequestParam String name) {
 
 
         var producer = producerService.findByNameOrThrowNotFound(name);
@@ -47,7 +47,7 @@ public class ProducerController {
     }
 
     @GetMapping("{producerId}")
-    public ResponseEntity<ProducerGetResponse> findById(@PathVariable Long producerId) {
+    public ResponseEntity<ProducerGetResponse> findProducerById(@PathVariable Long producerId) {
 
         var producer = producerService.findByIdOrThrowNotFound(producerId);
 
@@ -59,7 +59,7 @@ public class ProducerController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             headers = {"x-api-key", "x-api-teste"})
-    public ResponseEntity<ProducerGetResponse> create(@RequestBody @Valid ProducerPostRequest producerPostRequest,
+    public ResponseEntity<ProducerGetResponse> createProducer(@RequestBody @Valid ProducerPostRequest producerPostRequest,
                                                       @RequestHeader HttpHeaders headers,
                                                       HttpServletRequest request) {
 
@@ -71,7 +71,7 @@ public class ProducerController {
     }
 
     @DeleteMapping("{producerId}")
-    public ResponseEntity<Void> deleteById(@PathVariable Long producerId) {
+    public ResponseEntity<Void> deleteProducerById(@PathVariable Long producerId) {
         log.info("Deleting producer with id {}", producerId);
 
         producerService.delete(producerId);
@@ -80,7 +80,7 @@ public class ProducerController {
     }
 
     @PutMapping
-    public ResponseEntity<Void> replace(@RequestBody @Valid ProducerPutRequest producerPutRequest) {
+    public ResponseEntity<Void> replaceProducer(@RequestBody @Valid ProducerPutRequest producerPutRequest) {
         log.info("Updating producer with id {}", producerPutRequest.getId());
 
         var producerToRemove = producerMapperService.toProducer(producerPutRequest);
