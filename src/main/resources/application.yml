@@ -10,7 +10,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
   datasource:
     username: root
     url: jdbc:mysql://localhost:3306/anime_service?useTimezone=true&serverTimezone=UTC&createDatabaseIfNotExist=true
@@ -30,6 +30,13 @@ logging:
     dev.valente: debug
     org.springframework.security: debug
 
+management:
+  server:
+    port: 8090
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 #  file:
 #    name: logs/minha-aplicacao.log
