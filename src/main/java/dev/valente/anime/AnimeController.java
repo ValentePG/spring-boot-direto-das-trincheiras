@@ -1,7 +1,12 @@
 package dev.valente.anime;
 
+import dev.valente.api.AnimeControllerApi;
+import dev.valente.dto.*;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springdoc.core.annotations.ParameterObject;
@@ -19,7 +24,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/animes")
 @SecurityRequirement(name = "basicAuth")
-public class AnimeController {
+public class AnimeController implements AnimeControllerApi {
 
     private final AnimeService animeService;
 
@@ -33,14 +38,20 @@ public class AnimeController {
         return ResponseEntity.ok(animeGetResponse);
     }
 
+    @Override
     @GetMapping("/paginated")
-    public ResponseEntity<Page<AnimeGetResponse>> findAllAnimesPaginated(@ParameterObject Pageable pageable) {
+    public ResponseEntity<PageAnimeGetResponse> findAllAnimesPaginated(
+            @Min(0) @Parameter(name = "page", description = "Zero-based page index (0..N)", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+            @Min(1) @Parameter(name = "size", description = "The size of the page to be returned", in = ParameterIn.QUERY) @Valid @RequestParam(value = "size", required = false, defaultValue = "20") Integer size,
+            @Parameter(name = "sort", description = "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "sort", required = false) List<String> sort,
+            @ParameterObject final Pageable pageable
+    ) {
+        var jpaPageAnimeGetResponse = animeService.findAllPaginated(pageable);
 
-        var animePage = animeService.findAllPaginated(pageable).map(mapperService::toAnimeGetResponse);
+        var pageAnimeGetResponse = mapperService.toPageAnimeGetResponse(jpaPageAnimeGetResponse);
 
-        return ResponseEntity.ok(animePage);
+        return ResponseEntity.ok(pageAnimeGetResponse);
     }
-
 
     @GetMapping("find")
     public ResponseEntity<AnimeGetResponse> findAnimeByName(@RequestParam String name) {

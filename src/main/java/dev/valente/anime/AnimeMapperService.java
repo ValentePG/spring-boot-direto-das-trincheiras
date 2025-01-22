@@ -1,7 +1,9 @@
 package dev.valente.anime;
 
 import dev.valente.domain.Anime;
+import dev.valente.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,5 +26,9 @@ public class AnimeMapperService {
 
     public AnimePostResponse toAnimePostResponse(Anime anime) {
         return mapper.toAnimePostResponse(anime);
+    }
+
+    public PageAnimeGetResponse toPageAnimeGetResponse(Page<Anime> anime) {
+        return mapper.toPageAnimeGetResponse(anime);
     }
 }

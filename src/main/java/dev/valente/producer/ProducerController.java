@@ -1,5 +1,9 @@
 package dev.valente.producer;
 
+import dev.valente.api.ProducerControllerApi;
+import dev.valente.dto.ProducerGetResponse;
+import dev.valente.dto.ProducerPostRequest;
+import dev.valente.dto.ProducerPutRequest;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -19,7 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/producers")
 @SecurityRequirement(name = "basicAuth")
-public class ProducerController {
+public class ProducerController implements ProducerControllerApi {
 
     private final ProducerService producerService;
     private final ProducerMapperService producerMapperService;
@@ -59,9 +63,9 @@ public class ProducerController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             headers = {"x-api-key", "x-api-teste"})
-    public ResponseEntity<ProducerGetResponse> createProducer(@RequestBody @Valid ProducerPostRequest producerPostRequest,
-                                                      @RequestHeader HttpHeaders headers,
-                                                      HttpServletRequest request) {
+//    @RequestHeader HttpHeaders headers,
+//    HttpServletRequest request
+    public ResponseEntity<ProducerGetResponse> createProducer(@RequestBody @Valid ProducerPostRequest producerPostRequest) {
 
         var producer = producerMapperService.toProducer(producerPostRequest);
         var producerSaved = producerService.save(producer);
@@ -69,6 +73,7 @@ public class ProducerController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(producerGetResponse);
     }
+
 
     @DeleteMapping("{producerId}")
     public ResponseEntity<Void> deleteProducerById(@PathVariable Long producerId) {

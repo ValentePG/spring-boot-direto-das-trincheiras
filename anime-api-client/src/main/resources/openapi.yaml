@@ -226,6 +226,7 @@ paths:
       tags:
         - anime-controller
       operationId: findAllAnimesPaginated
+      x-spring-paginated: true
       parameters:
         - name: page
           in: query
@@ -291,8 +292,10 @@ components:
         id:
           type: integer
           format: int64
+          x-field-extra-annotation: "@jakarta.validation.constraints.NotNull(message=\"O id não pode ser nulo\")"
         name:
           type: string
+          x-field-extra-annotation: "@jakarta.validation.constraints.NotBlank(message=\"O nome não pode estar em branco\")"
     AnimePutRequest:
       required:
         - id
@@ -313,6 +316,7 @@ components:
       properties:
         name:
           type: string
+          x-field-extra-annotation: "@jakarta.validation.constraints.NotBlank(message=\"O nome não pode estar em branco\")"
     ProducerGetResponse:
       type: object
       properties:

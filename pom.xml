@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>21</java.version>
+		<anime-api-client.version>1.0-SNAPSHOT</anime-api-client.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -54,6 +55,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			<version>3.4.1</version>
+		</dependency>
+		<dependency>
+			<groupId>dev.valente</groupId>
+			<artifactId>anime-api-client</artifactId>
+			<version>${anime-api-client.version}</version>
 		</dependency>
 
 		<dependency>
