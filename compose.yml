@@ -1,3 +1,7 @@
+x-database-variables: &database-variables
+  SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/anime_service?useTimezone=true&serverTimezone=UTC&createDatabaseIfNotExist=true
+  SPRING_DATASOURCE_USERNAME: root
+  SPRING_DATASOURCE_PASSWORD: valente
 services:
   mysql:
     image: mysql:9.0.1
@@ -9,6 +13,15 @@ services:
       - "3306:3306"
     volumes:
       - devdojo-db:/var/lib/mysql
+  spring-boot-das-trincheiras:
+    image: valentedev/spring-boot-das-trincheiras
+    container_name: spring-boot-das-trincheiras
+    ports:
+      - "8080:8080"
+      - "8090:8090"
+    environment:
+      <<: *database-variables
+
   prometheus:
     image: prom/prometheus:v3.0.0
     container_name: prometheus
