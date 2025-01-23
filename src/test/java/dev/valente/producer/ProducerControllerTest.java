@@ -13,7 +13,6 @@ import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -30,7 +29,7 @@ import java.util.stream.Stream;
 @Slf4j
 @WebMvcTest(controllers = ProducerController.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@ComponentScan(basePackages = {"dev.valente.producer","dev.valente.common","dev.valente.securityconfig"})
+@ComponentScan(basePackages = {"dev.valente.producer", "dev.valente.common", "dev.valente.securityconfig"})
 @WithMockUser
 //@ActiveProfiles("test")
 //@Import({...})

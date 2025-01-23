@@ -9,3 +9,9 @@ spring:
   datasource:
     url: jdbc:h2:mem::dbuser
     username: sa
+
+
+brasil-api:
+  base-url: ${BRASIL_API_BASE_URL:https//brasilapi.com.br/api}
+  cep-uri: ${BRASIL_API_URI:/cep/v1/{cep}}
+
