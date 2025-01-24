@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class ConnectionController {
 
-    private final Connection connection;
+  private final Connection connection;
 
-    @GetMapping
-    public ResponseEntity<Connection> getConnection() {
-        log.debug(connection.toString());
-        return ResponseEntity.ok(connection);
-    }
+  @GetMapping
+  public ResponseEntity<Connection> getConnection() {
+    log.debug(connection.toString());
+    return ResponseEntity.ok(connection);
+  }
 }

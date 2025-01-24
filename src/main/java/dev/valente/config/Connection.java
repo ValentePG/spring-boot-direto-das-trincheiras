@@ -8,7 +8,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 public class Connection {
-    private String host;
-    private String username;
-    private String password;
+
+  private String host;
+  private String username;
+  private String password;
 }
