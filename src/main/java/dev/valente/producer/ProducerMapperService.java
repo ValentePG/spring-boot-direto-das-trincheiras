@@ -11,18 +11,18 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ProducerMapperService {
 
-    private final ProducerMapper mapper;
+  private final ProducerMapper mapper;
 
-    public Producer toProducer(ProducerPutRequest putRequest) {
-        return mapper.toProducer(putRequest);
-    }
+  public Producer toProducer(ProducerPutRequest putRequest) {
+    return mapper.toProducer(putRequest);
+  }
 
-    public Producer toProducer(ProducerPostRequest postRequest) {
-        return mapper.toProducer(postRequest);
-    }
+  public Producer toProducer(ProducerPostRequest postRequest) {
+    return mapper.toProducer(postRequest);
+  }
 
-    public ProducerGetResponse toProducerGetResponse(Producer producer) {
-        return mapper.toProducerGetResponse(producer);
-    }
+  public ProducerGetResponse toProducerGetResponse(Producer producer) {
+    return mapper.toProducerGetResponse(producer);
+  }
 
 }

@@ -10,10 +10,10 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 @EnableConfigurationProperties({ConnectionConfigurationProperties.class, BrasilApiConfigurationProperties.class})
 public class SpringBootDasTrincheirasApplication {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        SpringApplication.run(SpringBootDasTrincheirasApplication.class, args);
+    SpringApplication.run(SpringBootDasTrincheirasApplication.class, args);
 
-    }
+  }
 
 }

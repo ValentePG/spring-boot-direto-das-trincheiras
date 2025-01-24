@@ -19,34 +19,34 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-    public static final String[] WHITE_LIST = {"/swagger-ui.html", "/swagger-ui/**", "/v3/**"};
+  public static final String[] WHITE_LIST = {"/swagger-ui.html", "/swagger-ui/**", "/v3/**"};
 
-    @Bean
-    public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
+  @Bean
+  public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
 
-        var user = User.withUsername("gabriel")
-                .password(passwordEncoder.encode("testregular"))
-                .roles("USER").build();
+    var user = User.withUsername("gabriel")
+        .password(passwordEncoder.encode("testregular"))
+        .roles("USER").build();
 
-        return new InMemoryUserDetailsManager(user);
-    }
+    return new InMemoryUserDetailsManager(user);
+  }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(WHITE_LIST).permitAll()
-                        .requestMatchers("v1/animes/**").hasRole("USER")
-                        .requestMatchers("v1/producers/**").hasRole("USER")
-                        .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
-                        .anyRequest().authenticated())
-                .httpBasic(Customizer.withDefaults())
-                .build();
-    }
+  @Bean
+  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    return http
+        .csrf(AbstractHttpConfigurer::disable)
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers(WHITE_LIST).permitAll()
+            .requestMatchers("v1/animes/**").hasRole("USER")
+            .requestMatchers("v1/producers/**").hasRole("USER")
+            .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
+            .anyRequest().authenticated())
+        .httpBasic(Customizer.withDefaults())
+        .build();
+  }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+    return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+  }
 }

@@ -22,7 +22,7 @@ class ProducerServiceTest {
     private ProducerService producerService;
 
     @Mock
-    private ProducerRepositoryJPA repository;
+    private ProducerRepository repository;
 
     private final ProducerDataUtil producerDataUtil = new ProducerDataUtil();
 

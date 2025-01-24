@@ -47,7 +47,7 @@ class ProducerControllerTest {
     private MockMvc mockMvc;
 
     @MockitoBean
-    private ProducerRepositoryJPA producerRepository;
+    private ProducerRepository producerRepository;
 
     @Autowired
     private ProducerDataUtil dataUtil;

@@ -10,10 +10,10 @@ import org.mapstruct.MappingConstants;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ProducerMapper {
 
-    Producer toProducer(ProducerPostRequest postRequest);
+  Producer toProducer(ProducerPostRequest postRequest);
 
-    Producer toProducer(ProducerPutRequest putRequest);
+  Producer toProducer(ProducerPutRequest putRequest);
 
-    ProducerGetResponse toProducerGetResponse(Producer producer);
+  ProducerGetResponse toProducerGetResponse(Producer producer);
 
 }

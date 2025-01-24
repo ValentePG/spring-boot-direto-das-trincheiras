@@ -2,51 +2,50 @@ package dev.valente.producer;
 
 import dev.valente.domain.Producer;
 import dev.valente.user_service.exception.NotFoundException;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class ProducerService {
 
-    private final ProducerRepositoryJPA producerRepository;
+  private final ProducerRepository producerRepository;
 
-    public List<Producer> findAll() {
-        return producerRepository.findAll();
-    }
+  public List<Producer> findAll() {
+    return producerRepository.findAll();
+  }
 
-    public Producer save(Producer producer) {
+  public Producer save(Producer producer) {
 
-        return producerRepository.save(producer);
-    }
+    return producerRepository.save(producer);
+  }
 
-    public Producer findByNameOrThrowNotFound(String name) {
-        return producerRepository.findProducerByName(name)
-                .orElseThrow(() -> new NotFoundException("Producer not found"));
-    }
+  public Producer findByNameOrThrowNotFound(String name) {
+    return producerRepository.findProducerByName(name)
+        .orElseThrow(() -> new NotFoundException("Producer not found"));
+  }
 
-    public Producer findByIdOrThrowNotFound(Long id) {
-        return producerRepository.findProducerById(id)
-                .orElseThrow(() -> new NotFoundException("Producer not found"));
-    }
+  public Producer findByIdOrThrowNotFound(Long id) {
+    return producerRepository.findProducerById(id)
+        .orElseThrow(() -> new NotFoundException("Producer not found"));
+  }
 
-    public void delete(Long producerId) {
+  public void delete(Long producerId) {
 
-        var producerToDelete = findByIdOrThrowNotFound(producerId);
+    var producerToDelete = findByIdOrThrowNotFound(producerId);
 
-        producerRepository.delete(producerToDelete);
-    }
+    producerRepository.delete(producerToDelete);
+  }
 
-    public void replace(Producer producer) {
+  public void replace(Producer producer) {
 
-        var producerToRemove = findByIdOrThrowNotFound(producer.getId());
-        producer.setCreatedAt(producerToRemove.getCreatedAt());
+    var producerToRemove = findByIdOrThrowNotFound(producer.getId());
+    producer.setCreatedAt(producerToRemove.getCreatedAt());
 
-        producerRepository.save(producerToRemove);
+    producerRepository.save(producerToRemove);
 
-    }
+  }
 
 
 }
