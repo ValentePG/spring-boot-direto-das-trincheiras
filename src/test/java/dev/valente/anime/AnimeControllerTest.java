@@ -40,7 +40,7 @@ class AnimeControllerTest {
     private AnimeController controller;
 
     @MockitoBean
-    private AnimeRepositoryJPA animeRepository;
+    private AnimeRepository animeRepository;
 
     @Autowired
     private AnimeDataUtil dataUtil;

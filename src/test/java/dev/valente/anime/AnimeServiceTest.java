@@ -27,7 +27,7 @@ class AnimeServiceTest {
     private AnimeService animeService;
 
     @Mock
-    private AnimeRepositoryJPA animeRepository;
+    private AnimeRepository animeRepository;
 
     private final AnimeDataUtil dataUtil = new AnimeDataUtil();
 
