@@ -46,6 +46,8 @@
   - Variáveis de ambiente
   - Biblioteca Json Unit AssertJ
   - DataSource Proxy (gavlyukovskiy)
+  - Migração com flyway
+  - CheckStyle
 
 
 
