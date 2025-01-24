@@ -20,10 +20,12 @@
     - Mockito
     - Junit
     - MockMvc
+    - RestClient
   - Integração
-    - testContainers
-    - testRestTemplate
+    - TestContainers
+    - TestRestTemplate
     - RestAssured
+    - WireMock
 - **Spring Security**
   - Autenticação em memória
   - Autenticação em banco
