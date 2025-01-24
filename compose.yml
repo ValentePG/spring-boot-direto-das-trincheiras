@@ -13,14 +13,14 @@ services:
       - "3306:3306"
     volumes:
       - devdojo-db:/var/lib/mysql
-  spring-boot-das-trincheiras:
-    image: valentedev/spring-boot-das-trincheiras
-    container_name: spring-boot-das-trincheiras
-    ports:
-      - "8080:8080"
-      - "8090:8090"
-    environment:
-      <<: *database-variables
+#  spring-boot-das-trincheiras:
+#    image: valentedev/spring-boot-das-trincheiras
+#    container_name: spring-boot-das-trincheiras
+#    ports:
+#      - "8080:8080"
+#      - "8090:8090"
+#    environment:
+#      <<: *database-variables
 
   prometheus:
     image: prom/prometheus:v3.0.0
